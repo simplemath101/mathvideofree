@@ -3,383 +3,1154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathematics YouTube Video Viewer</title>
+    <title>Math Quiz</title>
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --accent-color: #e74c3c;
-            --dark-color: #2c3e50;
-            --light-color: #ecf0f1;
+            --math-blue: #2196F3;
+            --dark-blue: #1565C0;
+            --light-blue: #BBDEFB;
+            --bright-blue: #00BCD4;
+            --pi-purple: #9C27B0;
+            --gold: #FFD700;
+            --equation-orange: #FF9800;
         }
-
-        * {
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F5F5F5;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232196F3' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            padding: 20px;
-            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: var(--dark-color);
-            color: var(--light-color);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+        
+        .quiz-container {
             background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 1;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(33, 150, 243, 0.2);
+            width: 80%;
+            max-width: 700px;
+            overflow: hidden;
+            border: 8px solid var(--dark-blue);
+            position: relative;
         }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        select, input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        select {
-            background-color: white;
-        }
-
-        .option-available {
-            font-weight: bold;
-        }
-
-        .option-unavailable {
-            color: #aaa;
-            filter: blur(0.5px);
-            cursor: not-allowed;
-        }
-
-        button {
-            background-color: var(--primary-color);
+        
+        .quiz-header {
+            background-color: var(--math-blue);
             color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--dark-blue);
+            position: relative;
+        }
+        
+        .quiz-header::before, .quiz-header::after {
+            content: "π";
+            position: absolute;
+            width: 40px;
+            height: 70px;
+            background-color: var(--pi-purple);
+            border-radius: 50%;
+            top: -30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .quiz-header::before {
+            left: 20%;
+            transform: rotate(-45deg);
+        }
+        
+        .quiz-header::after {
+            right: 20%;
+            transform: rotate(45deg);
+        }
+        
+        .quiz-header h1 {
+            margin: 0;
+            font-size: 2em;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timer-container {
+            margin: 15px 30px;
+            background-color: #E3F2FD;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            border: 2px solid var(--dark-blue);
+            position: relative;
+        }
+        
+        .timer-bar {
+            height: 100%;
+            width: 100%;
+            background-color: var(--math-blue);
+            transition: width 0.1s linear;
+        }
+        
+        .timer-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--dark-blue);
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .question-container {
+            padding: 0 30px 30px 30px;
+            background-color: #FAFAFA;
+            position: relative;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        
+        .question {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+            border-left: 5px solid var(--math-blue);
+            padding-left: 15px;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .option {
+            padding: 15px;
+            background-color: #E3F2FD;
+            border: 2px solid var(--light-blue);
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
-
-        button:hover {
-            background-color: #2980b9;
+        
+        .option:hover {
+            background-color: var(--light-blue);
+            transform: translateX(5px);
         }
-
-        #videoContainer {
-            margin-top: 30px;
+        
+        .correct {
+            background-color: var(--gold);
+            border-color: var(--equation-orange);
+            color: black;
+            font-weight: bold;
+        }
+        
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #E0E0E0;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        
+        .progress-dot.active {
+            background-color: var(--math-blue);
+            transform: scale(1.3);
+        }
+        
+        .quiz-results {
+            text-align: center;
+            padding: 30px;
             display: none;
         }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
+        
+        .results-header {
+            font-size: 2em;
+            color: var(--dark-blue);
             margin-bottom: 20px;
         }
-
-        .video-wrapper iframe {
+        
+        .score {
+            font-size: 4em;
+            color: var(--math-blue);
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .restart-btn {
+            background-color: var(--math-blue);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .restart-btn:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-3px);
+        }
+        
+        /* Math decorations */
+        .math-decoration {
             position: absolute;
-            top: 0;
-            left: 0;
+            z-index: -1;
+        }
+        
+        .math-left {
+            left: -40px;
+            bottom: -30px;
+            transform: rotate(-15deg);
+        }
+        
+        .math-right {
+            right: -40px;
+            bottom: -30px;
+            transform: rotate(15deg) scaleX(-1);
+        }
+        
+        .symbol {
+            width: 100px;
+            height: 50px;
+            background-color: var(--pi-purple);
+            border-radius: 50% 50% 0 50%;
+            position: relative;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .symbol::before {
+            content: "";
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            background-color: var(--bright-blue);
+            border-radius: 50% 50% 0 50%;
+            top: 15%;
+            left: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .timer-paused {
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Transitions */
+        .slide-out {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        
+        .slide-in {
+            animation: slideIn 0.6s forwards;
+        }
+        
+        @keyframes slideIn {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .flash {
+            animation: flash 0.7s;
+        }
+        
+        @keyframes flash {
+            0%, 50%, 100% {
+                opacity: 1;
+            }
+            25%, 75% {
+                opacity: 0.5;
+            }
+        }
+        
+        /* Animated Character */
+        .animated-character {
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            width: 80px;
+            height: 80px;
+            z-index: 10;
+        }
+        
+        .character-container {
+            position: relative;
             width: 100%;
             height: 100%;
-            border: none;
-            border-radius: 8px;
         }
-
-        .video-details {
-            margin-top: 20px;
+        
+        .character-body {
+            width: 60px;
+            height: 60px;
+            background-color: var(--math-blue);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            overflow: hidden;
+            border: 3px solid var(--dark-blue);
         }
-
-        .upgrade-message {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            display: none;
+        
+        .character-face {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
-
-        .upgrade-message button {
+        
+        .character-eye {
+            position: absolute;
+            width: 10px;
+            height: 15px;
             background-color: white;
-            color: var(--accent-color);
-            margin-top: 10px;
+            border-radius: 50%;
+            top: 20px;
         }
-
-        .message {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 4px;
-            text-align: center;
+        
+        .character-eye-left {
+            left: 15px;
         }
-
-        .error {
-            background-color: rgba(231, 76, 60, 0.1);
-            color: #e74c3c;
+        
+        .character-eye-right {
+            right: 15px;
         }
-
-        .success {
-            background-color: rgba(46, 204, 113, 0.1);
-            color: #2ecc71;
+        
+        .character-pupil {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: black;
+            border-radius: 50%;
+            top: 5px;
+            left: 2.5px;
         }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 15px;
-            color: #7f8c8d;
-            font-size: 14px;
+        
+        .character-mouth {
+            position: absolute;
+            width: 24px;
+            height: 12px;
+            border-radius: 0 0 12px 12px;
+            background-color: white;
+            bottom: 15px;
+            left: 18px;
+            overflow: hidden;
+        }
+        
+        .character-mouth-inner {
+            width: 100%;
+            height: 5px;
+            background-color: #FF5252;
+            position: absolute;
+            bottom: 0;
+        }
+        
+        /* Character animations */
+        .character-speaking {
+            animation: speaking 0.5s infinite alternate;
+        }
+        
+        @keyframes speaking {
+            0% {
+                height: 12px;
+                border-radius: 0 0 12px 12px;
+            }
+            100% {
+                height: 8px;
+                border-radius: 0 0 8px 8px;
+            }
+        }
+        
+        .character-blink {
+            animation: blink 3s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 96%, 100% {
+                transform: scaleY(1);
+            }
+            98% {
+                transform: scaleY(0.1);
+            }
+        }
+        
+        .character-thinking {
+            animation: thinking 2s infinite;
+        }
+        
+        @keyframes thinking {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(5deg);
+            }
+            75% {
+                transform: rotate(-5deg);
+            }
+        }
+        
+        @media (max-width: 700px) {
+            .quiz-container {
+                width: 95%;
+            }
+            
+            .math-decoration {
+                display: none;
+            }
+            
+            .animated-character {
+                width: 60px;
+                height: 60px;
+                right: 5px;
+                top: 15px;
+            }
+            
+            .character-body {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .character-eye {
+                width: 8px;
+                height: 12px;
+                top: 15px;
+            }
+            
+            .character-eye-left {
+                left: 12px;
+            }
+            
+            .character-eye-right {
+                right: 12px;
+            }
+            
+            .character-mouth {
+                width: 18px;
+                height: 9px;
+                bottom: 12px;
+                left: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Mathematics YouTube Viewer</h1>
-        <p>Watch educational mathematics videos</p>
-    </header>
-
-    <div class="container">
-        <div class="form-group">
-            <label for="topicSelect">Select Mathematics Topic:</label>
-            <select id="topicSelect">
-                <option value="" disabled selected>-- Select a topic --</option>
-                <option value="algebra" class="option-available">Algebra</option>
-                <option value="geometry" class="option-available">Geometry</option>
-                <option value="arithmetic" class="option-available">Arithmetic</option>
-                <option value="calculus" class="option-unavailable">Calculus</option>
-                <option value="statistics" class="option-unavailable">Statistics</option>
-                <option value="trigonometry" class="option-unavailable">Trigonometry</option>
-                <option value="probability" class="option-unavailable">Probability</option>
-                <option value="number-theory" class="option-unavailable">Number Theory</option>
-                <option value="discrete" class="option-unavailable">Discrete Mathematics</option>
-                <option value="topology" class="option-unavailable">Topology</option>
-            </select>
-        </div>
-
-        <div id="inputContainer" style="display: none;">
-            <div class="form-group">
-                <label for="videoUrl">Enter YouTube Video URL:</label>
-                <input type="text" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." />
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Math Quiz</h1>
+            
+            <!-- Animated Character -->
+            <div class="animated-character">
+                <div class="character-container">
+                    <div class="character-body">
+                        <div class="character-face">
+                            <div class="character-eye character-eye-left character-blink">
+                                <div class="character-pupil"></div>
+                            </div>
+                            <div class="character-eye character-eye-right character-blink">
+                                <div class="character-pupil"></div>
+                            </div>
+                            <div class="character-mouth">
+                                <div class="character-mouth-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button id="loadVideo">Load Video</button>
         </div>
-
-        <div id="upgradeMessage" class="upgrade-message">
-            <p>UPGRADE TO PRO to access this topic!</p>
-            <button id="dismissUpgrade">Dismiss</button>
+        
+        <div class="timer-container">
+            <div class="timer-bar" id="timer-bar"></div>
+            <div class="timer-text" id="timer-text">10</div>
         </div>
-
-        <div id="messageContainer" class="message" style="display: none;"></div>
-
-        <div id="videoContainer">
-            <h2 id="videoTitle"></h2>
-            <div class="video-wrapper">
-                <iframe id="videoFrame" allowfullscreen></iframe>
-            </div>
-            <div class="video-details">
-                <p id="videoDescription"></p>
-            </div>
+        
+        <div class="question-container" id="question-container">
+            <div class="question" id="question-text"></div>
+            <div class="options" id="options-container"></div>
+            
+            <div class="progress-indicator" id="progress-indicator"></div>
+        </div>
+        
+        <div class="quiz-results" id="quiz-results">
+            <div class="results-header">Quiz Completed!</div>
+            <p>You scored:</p>
+            <div class="score" id="final-score">0/10</div>
+            <button class="restart-btn" id="restart-btn">Try Again</button>
+        </div>
+        
+        <div class="math-decoration math-left">
+            <div class="symbol">+</div>
+        </div>
+        <div class="math-decoration math-right">
+            <div class="symbol">×</div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Mathematics YouTube Viewer | Educational Purposes Only</p>
-    </footer>
-
     <script>
-        // DOM elements
-        const topicSelect = document.getElementById('topicSelect');
-        const inputContainer = document.getElementById('inputContainer');
-        const videoUrlInput = document.getElementById('videoUrl');
-        const loadVideoBtn = document.getElementById('loadVideo');
-        const upgradeMessage = document.getElementById('upgradeMessage');
-        const dismissUpgradeBtn = document.getElementById('dismissUpgrade');
-        const videoContainer = document.getElementById('videoContainer');
-        const videoFrame = document.getElementById('videoFrame');
-        const videoTitle = document.getElementById('videoTitle');
-        const videoDescription = document.getElementById('videoDescription');
-        const messageContainer = document.getElementById('messageContainer');
+        // Quiz questions
+        const questions = [
+            {
+                question: "What is the value of π (pi) to two decimal places?",
+                options: ["3.14", "3.24", "3.34", "3.44"],
+                correctAnswer: 0
+            },
+            {
+                question: "What is the square root of 144?",
+                options: ["10", "11", "12", "13"],
+                correctAnswer: 2
+            },
+            {
+                question: "If x + 5 = 12, what is x?",
+                options: ["5", "6", "7", "8"],
+                correctAnswer: 2
+            },
+            {
+                question: "What is 15% of 200?",
+                options: ["20", "25", "30", "35"],
+                correctAnswer: 2
+            },
+            {
+                question: "What is the area of a square with sides of length 6?",
+                options: ["24", "30", "36", "42"],
+                correctAnswer: 2
+            },
+            {
+                question: "What is the sum of the angles in a triangle?",
+                options: ["90 degrees", "180 degrees", "270 degrees", "360 degrees"],
+                correctAnswer: 1
+            },
+            {
+                question: "What is 2³ (2 cubed)?",
+                options: ["4", "6", "8", "10"],
+                correctAnswer: 2
+            },
+            {
+                question: "What is the perimeter of a rectangle with length 8 and width 5?",
+                options: ["20", "24", "26", "30"],
+                correctAnswer: 2
+            },
+            {
+                question: "What is the next number in the sequence: 2, 4, 8, 16, ...?",
+                options: ["24", "28", "32", "36"],
+                correctAnswer: 2
+            },
+            {
+                question: "What is the value of 5! (5 factorial)?",
+                options: ["100", "120", "140", "160"],
+                correctAnswer: 1
+            }
+        ];
 
-        // List of available topics
-        const availableTopics = ['algebra', 'geometry', 'arithmetic'];
+        // Quiz variables
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+        let timeLeft = 10;
+        let isPaused = true;
+        let isTransitioning = false;
+        let voiceEnabled = true;
+        let soundEffectsEnabled = true;
+        let currentUtterance = null;
+        let tickSound = null;
+        let dingSound = null;
+        let tickInterval = null;
         
-        // Topic-specific keywords to validate video content
-        const topicKeywords = {
-            algebra: ["algebra", "equation", "polynomials", "quadratic", "linear equations", "variables", "expressions", "functions", "systems of equations", "factoring"],
-            geometry: ["geometry", "triangles", "circles", "angles", "polygons", "shapes", "perimeter", "area", "volume", "proofs", "constructions"],
-            arithmetic: ["arithmetic", "addition", "subtraction", "multiplication", "division", "fractions", "decimals", "percentages", "integers", "mental math"]
-        };
+        // DOM elements
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const timerBar = document.getElementById('timer-bar');
+        const timerText = document.getElementById('timer-text');
+        const progressIndicator = document.getElementById('progress-indicator');
+        const quizResults = document.getElementById('quiz-results');
+        const finalScore = document.getElementById('final-score');
+        const restartBtn = document.getElementById('restart-btn');
+        const questionContainer = document.getElementById('question-container');
+        const characterMouth = document.querySelector('.character-mouth');
+        const characterBody = document.querySelector('.character-body');
+        
+        // Check if speech synthesis is supported
+        const speechSynthesisSupported = 'speechSynthesis' in window;
+        
+        // Create audio context and sounds
+        let audioContext;
+        let swooshBuffer;
+        
+        // Initialize audio
+        function initAudio() {
+            try {
+                // Create audio context
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Create a buffer for the swoosh sound (white noise with filter sweep)
+                createSwooshSound();
+                
+                // Create tick sound
+                createTickSound();
+                
+                // Create ding sound
+                createDingSound();
+            } catch(e) {
+                console.warn('Web Audio API is not supported in this browser');
+                soundEffectsEnabled = false;
+            }
+        }
+        
+        // Create swoosh sound effect
+        function createSwooshSound() {
+            // Create a 0.3 second buffer
+            const duration = 0.3;
+            const sampleRate = audioContext.sampleRate;
+            const bufferSize = duration * sampleRate;
+            swooshBuffer = audioContext.createBuffer(1, bufferSize, sampleRate);
+            
+            // Get buffer data
+            const data = swooshBuffer.getChannelData(0);
+            
+            // Fill with white noise with amplitude envelope
+            for (let i = 0; i < bufferSize; i++) {
+                // Create amplitude envelope (start strong, fade out)
+                const progress = i / bufferSize;
+                const envelope = Math.pow(1 - progress, 2);
+                
+                // White noise with envelope
+                data[i] = (Math.random() * 2 - 1) * envelope * 0.5;
+            }
+        }
+        
+        // Create tick sound
+        function createTickSound() {
+            const duration = 0.05;
+            const sampleRate = audioContext.sampleRate;
+            const bufferSize = duration * sampleRate;
+            tickSound = audioContext.createBuffer(1, bufferSize, sampleRate);
+            
+            const data = tickSound.getChannelData(0);
+            
+            // Create a tick sound using a quick sine wave
+            for (let i = 0; i < bufferSize; i++) {
+                const t = i / sampleRate;
+                // Using a sine wave with exponential decay
+                data[i] = Math.sin(2 * Math.PI * 800 * t) * Math.exp(-15 * t);
+            }
+        }
+        
+        // Create ding sound
+        function createDingSound() {
+            const duration = 0.3;
+            const sampleRate = audioContext.sampleRate;
+            const bufferSize = duration * sampleRate;
+            dingSound = audioContext.createBuffer(1, bufferSize, sampleRate);
+            
+            const data = dingSound.getChannelData(0);
+            
+            // Create a ding sound (like a bell)
+            for (let i = 0; i < bufferSize; i++) {
+                const t = i / sampleRate;
+                // Using a combination of sine waves with different frequencies
+                data[i] = 0.5 * Math.sin(2 * Math.PI * 880 * t) * Math.exp(-5 * t) + 
+                          0.3 * Math.sin(2 * Math.PI * 1760 * t) * Math.exp(-7 * t) +
+                          0.2 * Math.sin(2 * Math.PI * 2640 * t) * Math.exp(-9 * t);
+            }
+        }
+        
+        // Play swoosh sound
+        function playSwooshSound() {
+            if (!soundEffectsEnabled || !audioContext || !swooshBuffer) return;
+            
+            // Create source
+            const source = audioContext.createBufferSource();
+            source.buffer = swooshBuffer;
+            
+            // Create filter for the swoosh effect
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(10000, audioContext.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(500, audioContext.currentTime + 0.3);
+            filter.Q.value = 5;
+            
+            // Connect nodes
+            source.connect(filter);
+            filter.connect(audioContext.destination);
+            
+            // Play sound
+            source.start();
+        }
+        
+        // Play tick sound
+        function playTickSound() {
+            if (!soundEffectsEnabled || !audioContext || !tickSound) return;
+            
+            const source = audioContext.createBufferSource();
+            source.buffer = tickSound;
+            source.connect(audioContext.destination);
+            source.start();
+        }
+        
+        // Play ding sound
+        function playDingSound() {
+            if (!soundEffectsEnabled || !audioContext || !dingSound) return;
+            
+            const source = audioContext.createBufferSource();
+            source.buffer = dingSound;
+            
+            // Add a gain node to control volume
+            const gainNode = audioContext.createGain();
+            gainNode.gain.value = 0.7; // Adjust volume
+            
+            source.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            source.start();
+        }
+        
+        // Start tick sound interval
+        function startTickSounds() {
+            if (tickInterval) clearInterval(tickInterval);
+            
+            // Play tick sound every second during countdown
+            tickInterval = setInterval(() => {
+                if (!isPaused && !isTransitioning) {
+                    playTickSound();
+                }
+            }, 1000);
+        }
+        
+        // Stop tick sound interval
+        function stopTickSounds() {
+            if (tickInterval) {
+                clearInterval(tickInterval);
+                tickInterval = null;
+            }
+        }
+        
+        // Animate character
+        function animateCharacter(state) {
+            const eyes = document.querySelectorAll('.character-eye');
+            
+            // Reset all animations
+            characterMouth.classList.remove('character-speaking');
+            characterBody.classList.remove('character-thinking');
+            
+            switch(state) {
+                case 'speaking':
+                    characterMouth.classList.add('character-speaking');
+                    break;
+                case 'thinking':
+                    characterBody.classList.add('character-thinking');
+                    break;
+                case 'idle':
+                    // Just blink (already set up in CSS)
+                    break;
+                case 'correct':
+                    // Happy animation could be added here
+                    break;
+            }
+        }
+        
+        // Speak text using speech synthesis
+        function speakText(text) {
+            if (!speechSynthesisSupported || !voiceEnabled) return;
+            
+            // Cancel any ongoing speech
+            window.speechSynthesis.cancel();
+            
+            // Animate character to speaking mode
+            animateCharacter('speaking');
+            
+            // Create new utterance
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Set voice properties for more engaging tone
+            utterance.rate = 1.0;      // Speed (0.1 to 10)
+            utterance.pitch = 1.2;     // Pitch (0 to 2)
+            utterance.volume = 1.0;    // Volume (0 to 1)
+            
+            // Get available voices
+            const voices = window.speechSynthesis.getVoices();
+            
+            // Try to find a good English voice
+            if (voices.length > 0) {
+                // Look for these voices in order of preference
+                const preferredVoices = [
+                    'Google UK English Female',
+                    'Microsoft Zira Desktop',
+                    'Alex',
+                    'Samantha'
+                ];
+                
+                // Try to find a preferred voice
+                for (let preferredVoice of preferredVoices) {
+                    const voice = voices.find(v => v.name === preferredVoice);
+                    if (voice) {
+                        utterance.voice = voice;
+                        break;
+                    }
+                }
+                
+                // If no preferred voice found, try to use any English voice
+                if (!utterance.voice) {
+                    const englishVoice = voices.find(v => 
+                        v.lang.includes('en') && 
+                        (v.name.includes('Female') || !v.name.includes('Male'))
+                    );
+                    
+                    if (englishVoice) {
+                        utterance.voice = englishVoice;
+                    }
+                }
+            }
+            
+            // Keep reference to current utterance
+            currentUtterance = utterance;
+            
+            // Speak
+            window.speechSynthesis.speak(utterance);
+            
+            // Remove reference when done and stop animation
+            utterance.onend = function() {
+                currentUtterance = null;
+                animateCharacter('idle');
+            };
+        }
+        
+        // Initialize quiz
+        function initQuiz() {
+            // Initialize audio if not already done
+            if (!audioContext && soundEffectsEnabled) {
+                initAudio();
+            }
+            
+            // Create progress indicators
+            for (let i = 0; i < questions.length; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('progress-dot');
+                if (i === 0) dot.classList.add('active');
+                progressIndicator.appendChild(dot);
+            }
+            
+            // Set character to idle state
+            animateCharacter('idle');
+            
+            // Load first question with fade-in animation
+            questionContainer.classList.add('fade-in');
+            loadQuestion();
+        }
+        
+        // Calculate reading time based on question length
+        function calculateReadingTime(question) {
+            const words = question.split(' ').length;
+            // Estimate 250 words per minute reading speed
+            return Math.max(5, Math.ceil((words / 250) * 60));
+        }
 
-        // Initialize event listeners
-        function init() {
-            // Topic selection
-            topicSelect.addEventListener('change', handleTopicSelect);
-
-            // Handle unavailable topics
-            topicSelect.addEventListener('mousedown', function(e) {
-                const option = e.target.closest('option');
-                if (option && option.classList.contains('option-unavailable')) {
-                    e.preventDefault();
-                    showUpgradeMessage();
+        // Load a question
+        function loadQuestion() {
+            if (currentQuestion >= questions.length) {
+                showResults();
+                return;
+            }
+            
+            // Get the current question
+            const question = questions[currentQuestion];
+            
+            // Set the question text
+            questionText.textContent = question.question;
+            
+            // Clear options
+            optionsContainer.innerHTML = '';
+            
+            // Add options
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.textContent = option;
+                optionElement.dataset.index = index;
+                optionElement.addEventListener('click', selectOption);
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Update progress indicator
+            const dots = document.querySelectorAll('.progress-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === currentQuestion) {
+                    dot.classList.add('active');
                 }
             });
-
-            // Load video button
-            loadVideoBtn.addEventListener('click', handleLoadVideo);
-
-            // Dismiss upgrade message
-            dismissUpgradeBtn.addEventListener('click', function() {
-                upgradeMessage.style.display = 'none';
-            });
+            
+            // Reset timer
+            resetTimer();
+            
+            // Speak the question
+            const textToSpeak = `Question ${currentQuestion + 1}: ${question.question}`;
+            speakText(textToSpeak);
+            
+            // Start the timer after a brief pause to allow reading
+            setTimeout(() => {
+                startTimer();
+            }, 1000);
         }
 
-        // Handle topic selection
-        function handleTopicSelect(e) {
-            const selectedTopic = e.target.value;
+        // Reset the timer
+        function resetTimer() {
+            clearInterval(timer);
+            timeLeft = 10;
+            updateTimerDisplay();
+            isPaused = true;
+            timerBar.classList.remove('timer-paused');
+        }
+
+        // Start the timer
+        function startTimer() {
+            isPaused = false;
+            clearInterval(timer);
+            updateTimerDisplay();
             
-            if (availableTopics.includes(selectedTopic)) {
-                inputContainer.style.display = 'block';
-                upgradeMessage.style.display = 'none';
-                videoContainer.style.display = 'none';
-                showMessage('', 'none');
+            // Start tick sounds
+            startTickSounds();
+            
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    timeoutQuestion();
+                }
+            }, 1000);
+        }
+
+        // Update the timer display
+        function updateTimerDisplay() {
+            const percentage = (timeLeft / 10) * 100;
+            timerBar.style.width = `${percentage}%`;
+            timerText.textContent = timeLeft;
+            
+            // Change color based on time left
+            if (timeLeft <= 3) {
+                timerBar.style.backgroundColor = 'red';
             } else {
-                inputContainer.style.display = 'none';
-                showUpgradeMessage();
+                timerBar.style.backgroundColor = 'var(--math-blue)';
             }
         }
 
-        // Show upgrade message
-        function showUpgradeMessage() {
-            upgradeMessage.style.display = 'block';
-            inputContainer.style.display = 'none';
-            videoContainer.style.display = 'none';
+        // Handle timeout for a question
+        function timeoutQuestion() {
+            stopTickSounds();
+            
+            // Show correct answer
+            const correctIndex = questions[currentQuestion].correctAnswer;
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, index) => {
+                if (index === correctIndex) {
+                    option.classList.add('correct');
+                }
+                option.removeEventListener('click', selectOption);
+            });
+            
+            // Speak timeout message
+            speakText("Time's up! Moving to the next question.");
+            
+            // Move to next question after delay
+            setTimeout(() => {
+                animateNextQuestion();
+            }, 2000);
         }
 
-        // Handle loading the video
-        function handleLoadVideo() {
-            const videoUrl = videoUrlInput.value.trim();
-            const selectedTopic = topicSelect.value;
+        // Select an option
+        function selectOption(e) {
+            if (isTransitioning) return;
             
-            if (!videoUrl) {
-                showMessage('Please enter a YouTube video URL', 'error');
-                return;
+            // Stop the timer
+            clearInterval(timer);
+            isPaused = true;
+            stopTickSounds();
+            
+            // Get the selected option index
+            const selectedIndex = parseInt(e.target.dataset.index);
+            
+            // Get the correct answer
+            const correctIndex = questions[currentQuestion].correctAnswer;
+            
+            // Check if the answer is correct
+            const isCorrect = selectedIndex === correctIndex;
+            
+            // Highlight the correct answer
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                if (index === correctIndex) {
+                    option.classList.add('correct');
+                }
+                option.removeEventListener('click', selectOption);
+            });
+            
+            // Update score if correct
+            if (isCorrect) {
+                score++;
+                playDingSound();
+                speakText("Correct! Well done.");
+                animateCharacter('correct');
+            } else {
+                speakText(`Incorrect. The correct answer is ${questions[currentQuestion].options[correctIndex]}.`);
             }
             
-            // Extract video ID from different types of YouTube URLs
-            const videoId = extractVideoId(videoUrl);
+            // Move to next question after delay
+            setTimeout(() => {
+                animateNextQuestion();
+            }, 2000);
+        }
+
+        // Animate to next question
+        function animateNextQuestion() {
+            isTransitioning = true;
             
-            if (!videoId) {
-                showMessage('Invalid YouTube URL. Please enter a valid URL', 'error');
-                return;
+            // Play swoosh sound
+            playSwooshSound();
+            
+            // Slide out current question
+            questionContainer.classList.add('slide-out');
+            
+            setTimeout(() => {
+                // Move to next question
+                currentQuestion++;
+                
+                // Reset container style
+                questionContainer.classList.remove('slide-out');
+                questionContainer.classList.add('slide-in');
+                
+                // Load new question
+                loadQuestion();
+                
+                // Remove animation class after transition
+                setTimeout(() => {
+                    questionContainer.classList.remove('slide-in');
+                    isTransitioning = false;
+                }, 600);
+            }, 500);
+        }
+
+        // Show results
+        function showResults() {
+            // Hide question container
+            questionContainer.style.display = 'none';
+            
+            // Hide timer
+            document.querySelector('.timer-container').style.display = 'none';
+            
+            // Show results
+            quizResults.style.display = 'block';
+            quizResults.classList.add('fade-in');
+            
+            // Set final score
+            finalScore.textContent = `${score}/${questions.length}`;
+            
+            // Speak results
+            const percentage = Math.round((score / questions.length) * 100);
+            let resultMessage = `Quiz completed! You scored ${score} out of ${questions.length}, which is ${percentage} percent.`;
+            
+            if (percentage >= 90) {
+                resultMessage += " Excellent job! You're a math master!";
+            } else if (percentage >= 70) {
+                resultMessage += " Good work! You have a solid understanding of math.";
+            } else if (percentage >= 50) {
+                resultMessage += " Not bad, but there's room for improvement. Keep studying!";
+            } else {
+                resultMessage += " Looks like you need more practice with math concepts. Don't give up!";
             }
             
-            // For a real application, you would verify the video topic using YouTube API
-            // Here we'll simulate topic verification
-            verifyVideoTopic(videoId, selectedTopic);
+            speakText(resultMessage);
         }
 
-        // Extract video ID from YouTube URL
-        function extractVideoId(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
+        // Restart the quiz
+        function restartQuiz() {
+            // Reset variables
+            currentQuestion = 0;
+            score = 0;
             
-            return (match && match[2].length === 11) ? match[2] : null;
+            // Clear progress indicators
+            progressIndicator.innerHTML = '';
+            
+            // Show question container
+            questionContainer.style.display = 'block';
+            
+            // Show timer
+            document.querySelector('.timer-container').style.display = 'block';
+            
+            // Hide results
+            quizResults.style.display = 'none';
+            quizResults.classList.remove('fade-in');
+            
+            // Initialize quiz again
+            initQuiz();
         }
 
-        // Verify if video matches selected topic (simulated)
-        function verifyVideoTopic(videoId, topic) {
-            // In a real application, you would use YouTube API to get video details
-            // and verify that it matches the topic using tags, description, etc.
-            
-            // For demo purposes, we'll just load the video and assume it's appropriate
-            // In a real app, consider using YouTube Data API to check video metadata
-            
-            loadVideo(videoId, topic);
-        }
+        // Event listener for restart button
+        restartBtn.addEventListener('click', restartQuiz);
 
-        // Load the video into the iframe
-        function loadVideo(videoId, topic) {
-            // Create embed URL
-            const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-            
-            // Update iframe
-            videoFrame.src = embedUrl;
-            
-            // Set some mock details
-            videoTitle.textContent = `${capitalizeFirstLetter(topic)} Mathematics Video`;
-            videoDescription.textContent = `This is a ${topic} mathematics educational video. The content has been verified to match your selected topic.`;
-            
-            // Show video container
-            videoContainer.style.display = 'block';
-            showMessage(`Successfully loaded ${topic} mathematics video!`, 'success');
-            
-            // In a real application, you would fetch the actual video title and description
-            // from the YouTube API
-        }
-
-        // Show message
-        function showMessage(message, type) {
-            if (!message) {
-                messageContainer.style.display = 'none';
-                return;
+        // Voice synthesis initialization
+        if (speechSynthesisSupported) {
+            // Make sure we have voices loaded
+            if (window.speechSynthesis.getVoices().length === 0) {
+                window.speechSynthesis.onvoiceschanged = function() {
+                    // Voices are now loaded
+                };
             }
-            
-            messageContainer.textContent = message;
-            messageContainer.className = 'message';
-            
-            if (type) {
-                messageContainer.classList.add(type);
-            }
-            
-            messageContainer.style.display = 'block';
         }
 
-        // Helper function to capitalize first letter
-        function capitalizeFirstLetter(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1);
-        }
-
-        // Initialize the application
-        init();
+        // Initialize the quiz when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Slightly delay initialization to allow everything to load
+            setTimeout(initQuiz, 500);
+            
+            // Add audio context initialization on user interaction (required by some browsers)
+            document.body.addEventListener('click', () => {
+                if (!audioContext && soundEffectsEnabled) {
+                    initAudio();
+                }
+            }, { once: true });
+        });
     </script>
 </body>
 </html>
