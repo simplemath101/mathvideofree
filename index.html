@@ -6,19 +6,19 @@
     <title>Math Quiz</title>
     <style>
         :root {
-            --math-blue: #2196F3;
-            --dark-blue: #1565C0;
+            --math-blue: #1565C0;
+            --dark-blue: #0D47A1;
             --light-blue: #BBDEFB;
-            --bright-blue: #00BCD4;
-            --pi-purple: #9C27B0;
-            --gold: #FFD700;
-            --equation-orange: #FF9800;
+            --bright-blue: #2196F3;
+            --chalk-white: #F5F5F5;
+            --equation-color: #FF5722;
+            --paper-beige: #FFF8E1;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #F5F5F5;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232196F3' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-color: #E3F2FD;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231565C0' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             margin: 0;
             padding: 0;
             display: flex;
@@ -30,7 +30,7 @@
         .quiz-container {
             background-color: white;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(33, 150, 243, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 100, 0.2);
             width: 80%;
             max-width: 700px;
             overflow: hidden;
@@ -48,18 +48,13 @@
         }
         
         .quiz-header::before, .quiz-header::after {
-            content: "π";
+            content: "";
             position: absolute;
             width: 40px;
             height: 70px;
-            background-color: var(--pi-purple);
+            background-color: var(--math-blue);
             border-radius: 50%;
             top: -30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
         }
         
         .quiz-header::before {
@@ -144,9 +139,9 @@
         }
         
         .correct {
-            background-color: var(--gold);
-            border-color: var(--equation-orange);
-            color: black;
+            background-color: var(--bright-blue);
+            border-color: var(--dark-blue);
+            color: white;
             font-weight: bold;
         }
         
@@ -210,48 +205,23 @@
         .math-decoration {
             position: absolute;
             z-index: -1;
-        }
-        
-        .math-left {
-            left: -40px;
-            bottom: -30px;
-            transform: rotate(-15deg);
-        }
-        
-        .math-right {
-            right: -40px;
-            bottom: -30px;
-            transform: rotate(15deg) scaleX(-1);
-        }
-        
-        .symbol {
-            width: 100px;
-            height: 50px;
-            background-color: var(--pi-purple);
-            border-radius: 50% 50% 0 50%;
-            position: relative;
-            opacity: 0.8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Times New Roman', serif;
+            color: var(--light-blue);
             font-size: 24px;
-            color: white;
             font-weight: bold;
+            opacity: 0.6;
         }
         
-        .symbol::before {
-            content: "";
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            background-color: var(--bright-blue);
-            border-radius: 50% 50% 0 50%;
-            top: 15%;
-            left: 15%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
+        .formula-left {
+            left: -30px;
+            bottom: 40px;
+            transform: rotate(-45deg);
+        }
+        
+        .formula-right {
+            right: -30px;
+            bottom: 40px;
+            transform: rotate(45deg);
         }
         
         .timer-paused {
@@ -307,131 +277,6 @@
             }
         }
         
-        /* Animated Character */
-        .animated-character {
-            position: absolute;
-            right: 10px;
-            top: 20px;
-            width: 80px;
-            height: 80px;
-            z-index: 10;
-        }
-        
-        .character-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .character-body {
-            width: 60px;
-            height: 60px;
-            background-color: var(--math-blue);
-            border-radius: 50%;
-            position: absolute;
-            bottom: 0;
-            left: 10px;
-            overflow: hidden;
-            border: 3px solid var(--dark-blue);
-        }
-        
-        .character-face {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .character-eye {
-            position: absolute;
-            width: 10px;
-            height: 15px;
-            background-color: white;
-            border-radius: 50%;
-            top: 20px;
-        }
-        
-        .character-eye-left {
-            left: 15px;
-        }
-        
-        .character-eye-right {
-            right: 15px;
-        }
-        
-        .character-pupil {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: black;
-            border-radius: 50%;
-            top: 5px;
-            left: 2.5px;
-        }
-        
-        .character-mouth {
-            position: absolute;
-            width: 24px;
-            height: 12px;
-            border-radius: 0 0 12px 12px;
-            background-color: white;
-            bottom: 15px;
-            left: 18px;
-            overflow: hidden;
-        }
-        
-        .character-mouth-inner {
-            width: 100%;
-            height: 5px;
-            background-color: #FF5252;
-            position: absolute;
-            bottom: 0;
-        }
-        
-        /* Character animations */
-        .character-speaking {
-            animation: speaking 0.5s infinite alternate;
-        }
-        
-        @keyframes speaking {
-            0% {
-                height: 12px;
-                border-radius: 0 0 12px 12px;
-            }
-            100% {
-                height: 8px;
-                border-radius: 0 0 8px 8px;
-            }
-        }
-        
-        .character-blink {
-            animation: blink 3s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 96%, 100% {
-                transform: scaleY(1);
-            }
-            98% {
-                transform: scaleY(0.1);
-            }
-        }
-        
-        .character-thinking {
-            animation: thinking 2s infinite;
-        }
-        
-        @keyframes thinking {
-            0%, 100% {
-                transform: rotate(0deg);
-            }
-            25% {
-                transform: rotate(5deg);
-            }
-            75% {
-                transform: rotate(-5deg);
-            }
-        }
-        
         @media (max-width: 700px) {
             .quiz-container {
                 width: 95%;
@@ -440,39 +285,6 @@
             .math-decoration {
                 display: none;
             }
-            
-            .animated-character {
-                width: 60px;
-                height: 60px;
-                right: 5px;
-                top: 15px;
-            }
-            
-            .character-body {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .character-eye {
-                width: 8px;
-                height: 12px;
-                top: 15px;
-            }
-            
-            .character-eye-left {
-                left: 12px;
-            }
-            
-            .character-eye-right {
-                right: 12px;
-            }
-            
-            .character-mouth {
-                width: 18px;
-                height: 9px;
-                bottom: 12px;
-                left: 14px;
-            }
         }
     </style>
 </head>
@@ -480,25 +292,6 @@
     <div class="quiz-container">
         <div class="quiz-header">
             <h1>Math Quiz</h1>
-            
-            <!-- Animated Character -->
-            <div class="animated-character">
-                <div class="character-container">
-                    <div class="character-body">
-                        <div class="character-face">
-                            <div class="character-eye character-eye-left character-blink">
-                                <div class="character-pupil"></div>
-                            </div>
-                            <div class="character-eye character-eye-right character-blink">
-                                <div class="character-pupil"></div>
-                            </div>
-                            <div class="character-mouth">
-                                <div class="character-mouth-inner"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         
         <div class="timer-container">
@@ -520,11 +313,11 @@
             <button class="restart-btn" id="restart-btn">Try Again</button>
         </div>
         
-        <div class="math-decoration math-left">
-            <div class="symbol">+</div>
+        <div class="math-decoration formula-left">
+            ∫ e^x dx
         </div>
-        <div class="math-decoration math-right">
-            <div class="symbol">×</div>
+        <div class="math-decoration formula-right">
+            Σ n^2
         </div>
     </div>
 
@@ -533,52 +326,53 @@
         const questions = [
             {
                 question: "What is the value of π (pi) to two decimal places?",
-                options: ["3.14", "3.24", "3.34", "3.44"],
+                options: ["3.14", "3.41", "3.16", "3.12"],
                 correctAnswer: 0
             },
             {
-                question: "What is the square root of 144?",
-                options: ["10", "11", "12", "13"],
-                correctAnswer: 2
+                question: "Which of these is the Pythagorean theorem?",
+                options: ["a^2 + b^2 = c^2", "E = mc^2", "F = ma", "PV = nRT"],
+                correctAnswer: 0
             },
             {
-                question: "If x + 5 = 12, what is x?",
-                options: ["5", "6", "7", "8"],
-                correctAnswer: 2
-            },
-            {
-                question: "What is 15% of 200?",
-                options: ["20", "25", "30", "35"],
-                correctAnswer: 2
-            },
-            {
-                question: "What is the area of a square with sides of length 6?",
-                options: ["24", "30", "36", "42"],
-                correctAnswer: 2
-            },
-            {
-                question: "What is the sum of the angles in a triangle?",
-                options: ["90 degrees", "180 degrees", "270 degrees", "360 degrees"],
+                question: "What is the derivative of x^2?",
+                options: ["x^3", "2x", "x", "2x^2"],
                 correctAnswer: 1
             },
             {
-                question: "What is 2³ (2 cubed)?",
-                options: ["4", "6", "8", "10"],
+                question: "Which of the following is NOT a prime number?",
+                options: ["17", "19", "21", "23"],
                 correctAnswer: 2
             },
             {
-                question: "What is the perimeter of a rectangle with length 8 and width 5?",
-                options: ["20", "24", "26", "30"],
-                correctAnswer: 2
+                question: "The study of shapes, sizes, positions, and dimensions is known as:",
+                options: ["Algebra", "Geometry", "Calculus", "Trigonometry"],
+                correctAnswer: 1
             },
             {
-                question: "What is the next number in the sequence: 2, 4, 8, 16, ...?",
-                options: ["24", "28", "32", "36"],
-                correctAnswer: 2
+                question: "What is the sum of angles in a triangle?",
+                options: ["180°", "360°", "90°", "270°"],
+                correctAnswer: 0
             },
             {
-                question: "What is the value of 5! (5 factorial)?",
-                options: ["100", "120", "140", "160"],
+                // INTENTIONALLY WRONG QUESTION (Should be 0, not 1)
+                question: "What is the value of log₁₀(1)?",
+                options: ["0", "1", "10", "Undefined"],
+                correctAnswer: 1  // This should be 0 if correct
+            },
+            {
+                question: "If f(x) = 2x + 3, what is f(5)?",
+                options: ["10", "13", "8", "15"],
+                correctAnswer: 1
+            },
+            {
+                question: "What is the formula for the area of a circle?",
+                options: ["πr²", "2πr", "πr³", "πd"],
+                correctAnswer: 0
+            },
+            {
+                question: "Which number system has only 0s and 1s?",
+                options: ["Decimal", "Binary", "Hexadecimal", "Octal"],
                 correctAnswer: 1
             }
         ];
@@ -590,12 +384,6 @@
         let timeLeft = 10;
         let isPaused = true;
         let isTransitioning = false;
-        let voiceEnabled = true;
-        let soundEffectsEnabled = true;
-        let currentUtterance = null;
-        let tickSound = null;
-        let dingSound = null;
-        let tickInterval = null;
         
         // DOM elements
         const questionText = document.getElementById('question-text');
@@ -607,260 +395,9 @@
         const finalScore = document.getElementById('final-score');
         const restartBtn = document.getElementById('restart-btn');
         const questionContainer = document.getElementById('question-container');
-        const characterMouth = document.querySelector('.character-mouth');
-        const characterBody = document.querySelector('.character-body');
-        
-        // Check if speech synthesis is supported
-        const speechSynthesisSupported = 'speechSynthesis' in window;
-        
-        // Create audio context and sounds
-        let audioContext;
-        let swooshBuffer;
-        
-        // Initialize audio
-        function initAudio() {
-            try {
-                // Create audio context
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                
-                // Create a buffer for the swoosh sound (white noise with filter sweep)
-                createSwooshSound();
-                
-                // Create tick sound
-                createTickSound();
-                
-                // Create ding sound
-                createDingSound();
-            } catch(e) {
-                console.warn('Web Audio API is not supported in this browser');
-                soundEffectsEnabled = false;
-            }
-        }
-        
-        // Create swoosh sound effect
-        function createSwooshSound() {
-            // Create a 0.3 second buffer
-            const duration = 0.3;
-            const sampleRate = audioContext.sampleRate;
-            const bufferSize = duration * sampleRate;
-            swooshBuffer = audioContext.createBuffer(1, bufferSize, sampleRate);
-            
-            // Get buffer data
-            const data = swooshBuffer.getChannelData(0);
-            
-            // Fill with white noise with amplitude envelope
-            for (let i = 0; i < bufferSize; i++) {
-                // Create amplitude envelope (start strong, fade out)
-                const progress = i / bufferSize;
-                const envelope = Math.pow(1 - progress, 2);
-                
-                // White noise with envelope
-                data[i] = (Math.random() * 2 - 1) * envelope * 0.5;
-            }
-        }
-        
-        // Create tick sound
-        function createTickSound() {
-            const duration = 0.05;
-            const sampleRate = audioContext.sampleRate;
-            const bufferSize = duration * sampleRate;
-            tickSound = audioContext.createBuffer(1, bufferSize, sampleRate);
-            
-            const data = tickSound.getChannelData(0);
-            
-            // Create a tick sound using a quick sine wave
-            for (let i = 0; i < bufferSize; i++) {
-                const t = i / sampleRate;
-                // Using a sine wave with exponential decay
-                data[i] = Math.sin(2 * Math.PI * 800 * t) * Math.exp(-15 * t);
-            }
-        }
-        
-        // Create ding sound
-        function createDingSound() {
-            const duration = 0.3;
-            const sampleRate = audioContext.sampleRate;
-            const bufferSize = duration * sampleRate;
-            dingSound = audioContext.createBuffer(1, bufferSize, sampleRate);
-            
-            const data = dingSound.getChannelData(0);
-            
-            // Create a ding sound (like a bell)
-            for (let i = 0; i < bufferSize; i++) {
-                const t = i / sampleRate;
-                // Using a combination of sine waves with different frequencies
-                data[i] = 0.5 * Math.sin(2 * Math.PI * 880 * t) * Math.exp(-5 * t) + 
-                          0.3 * Math.sin(2 * Math.PI * 1760 * t) * Math.exp(-7 * t) +
-                          0.2 * Math.sin(2 * Math.PI * 2640 * t) * Math.exp(-9 * t);
-            }
-        }
-        
-        // Play swoosh sound
-        function playSwooshSound() {
-            if (!soundEffectsEnabled || !audioContext || !swooshBuffer) return;
-            
-            // Create source
-            const source = audioContext.createBufferSource();
-            source.buffer = swooshBuffer;
-            
-            // Create filter for the swoosh effect
-            const filter = audioContext.createBiquadFilter();
-            filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(10000, audioContext.currentTime);
-            filter.frequency.exponentialRampToValueAtTime(500, audioContext.currentTime + 0.3);
-            filter.Q.value = 5;
-            
-            // Connect nodes
-            source.connect(filter);
-            filter.connect(audioContext.destination);
-            
-            // Play sound
-            source.start();
-        }
-        
-        // Play tick sound
-        function playTickSound() {
-            if (!soundEffectsEnabled || !audioContext || !tickSound) return;
-            
-            const source = audioContext.createBufferSource();
-            source.buffer = tickSound;
-            source.connect(audioContext.destination);
-            source.start();
-        }
-        
-        // Play ding sound
-        function playDingSound() {
-            if (!soundEffectsEnabled || !audioContext || !dingSound) return;
-            
-            const source = audioContext.createBufferSource();
-            source.buffer = dingSound;
-            
-            // Add a gain node to control volume
-            const gainNode = audioContext.createGain();
-            gainNode.gain.value = 0.7; // Adjust volume
-            
-            source.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            source.start();
-        }
-        
-        // Start tick sound interval
-        function startTickSounds() {
-            if (tickInterval) clearInterval(tickInterval);
-            
-            // Play tick sound every second during countdown
-            tickInterval = setInterval(() => {
-                if (!isPaused && !isTransitioning) {
-                    playTickSound();
-                }
-            }, 1000);
-        }
-        
-        // Stop tick sound interval
-        function stopTickSounds() {
-            if (tickInterval) {
-                clearInterval(tickInterval);
-                tickInterval = null;
-            }
-        }
-        
-        // Animate character
-        function animateCharacter(state) {
-            const eyes = document.querySelectorAll('.character-eye');
-            
-            // Reset all animations
-            characterMouth.classList.remove('character-speaking');
-            characterBody.classList.remove('character-thinking');
-            
-            switch(state) {
-                case 'speaking':
-                    characterMouth.classList.add('character-speaking');
-                    break;
-                case 'thinking':
-                    characterBody.classList.add('character-thinking');
-                    break;
-                case 'idle':
-                    // Just blink (already set up in CSS)
-                    break;
-                case 'correct':
-                    // Happy animation could be added here
-                    break;
-            }
-        }
-        
-        // Speak text using speech synthesis
-        function speakText(text) {
-            if (!speechSynthesisSupported || !voiceEnabled) return;
-            
-            // Cancel any ongoing speech
-            window.speechSynthesis.cancel();
-            
-            // Animate character to speaking mode
-            animateCharacter('speaking');
-            
-            // Create new utterance
-            const utterance = new SpeechSynthesisUtterance(text);
-            
-            // Set voice properties for more engaging tone
-            utterance.rate = 1.0;      // Speed (0.1 to 10)
-            utterance.pitch = 1.2;     // Pitch (0 to 2)
-            utterance.volume = 1.0;    // Volume (0 to 1)
-            
-            // Get available voices
-            const voices = window.speechSynthesis.getVoices();
-            
-            // Try to find a good English voice
-            if (voices.length > 0) {
-                // Look for these voices in order of preference
-                const preferredVoices = [
-                    'Google UK English Female',
-                    'Microsoft Zira Desktop',
-                    'Alex',
-                    'Samantha'
-                ];
-                
-                // Try to find a preferred voice
-                for (let preferredVoice of preferredVoices) {
-                    const voice = voices.find(v => v.name === preferredVoice);
-                    if (voice) {
-                        utterance.voice = voice;
-                        break;
-                    }
-                }
-                
-                // If no preferred voice found, try to use any English voice
-                if (!utterance.voice) {
-                    const englishVoice = voices.find(v => 
-                        v.lang.includes('en') && 
-                        (v.name.includes('Female') || !v.name.includes('Male'))
-                    );
-                    
-                    if (englishVoice) {
-                        utterance.voice = englishVoice;
-                    }
-                }
-            }
-            
-            // Keep reference to current utterance
-            currentUtterance = utterance;
-            
-            // Speak
-            window.speechSynthesis.speak(utterance);
-            
-            // Remove reference when done and stop animation
-            utterance.onend = function() {
-                currentUtterance = null;
-                animateCharacter('idle');
-            };
-        }
         
         // Initialize quiz
         function initQuiz() {
-            // Initialize audio if not already done
-            if (!audioContext && soundEffectsEnabled) {
-                initAudio();
-            }
-            
             // Create progress indicators
             for (let i = 0; i < questions.length; i++) {
                 const dot = document.createElement('div');
@@ -868,9 +405,6 @@
                 if (i === 0) dot.classList.add('active');
                 progressIndicator.appendChild(dot);
             }
-            
-            // Set character to idle state
-            animateCharacter('idle');
             
             // Load first question with fade-in animation
             questionContainer.classList.add('fade-in');
@@ -880,277 +414,183 @@
         // Calculate reading time based on question length
         function calculateReadingTime(question) {
             const words = question.split(' ').length;
-            // Estimate 250 words per minute reading speed
-            return Math.max(5, Math.ceil((words / 250) * 60));
+            // Estimate 250 words per minute reading speed - minimum 2 seconds
+            return Math.max(Math.ceil(words / 250 * 60), 2);
         }
-
-        // Load a question
+        
+        // Load question
         function loadQuestion() {
-            if (currentQuestion >= questions.length) {
-                showResults();
-                return;
-            }
-            
-            // Get the current question
-            const question = questions[currentQuestion];
-            
-            // Set the question text
-            questionText.textContent = question.question;
-            
-            // Clear options
-            optionsContainer.innerHTML = '';
-            
-            // Add options
-            question.options.forEach((option, index) => {
-                const optionElement = document.createElement('div');
-                optionElement.classList.add('option');
-                optionElement.textContent = option;
-                optionElement.dataset.index = index;
-                optionElement.addEventListener('click', selectOption);
-                optionsContainer.appendChild(optionElement);
-            });
-            
-            // Update progress indicator
-            const dots = document.querySelectorAll('.progress-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.remove('active');
-                if (index === currentQuestion) {
-                    dot.classList.add('active');
-                }
-            });
-            
-            // Reset timer
-            resetTimer();
-            
-            // Speak the question
-            const textToSpeak = `Question ${currentQuestion + 1}: ${question.question}`;
-            speakText(textToSpeak);
-            
-            // Start the timer after a brief pause to allow reading
-            setTimeout(() => {
-                startTimer();
-            }, 1000);
-        }
-
-        // Reset the timer
-        function resetTimer() {
-            clearInterval(timer);
-            timeLeft = 10;
-            updateTimerDisplay();
-            isPaused = true;
-            timerBar.classList.remove('timer-paused');
-        }
-
-        // Start the timer
-        function startTimer() {
-            isPaused = false;
-            clearInterval(timer);
-            updateTimerDisplay();
-            
-            // Start tick sounds
-            startTickSounds();
-            
-            timer = setInterval(() => {
-                timeLeft--;
-                updateTimerDisplay();
+            if (currentQuestion < questions.length) {
+                // Update progress indicator
+                document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentQuestion);
+                });
                 
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    timeoutQuestion();
-                }
-            }, 1000);
-        }
-
-        // Update the timer display
-        function updateTimerDisplay() {
-            const percentage = (timeLeft / 10) * 100;
-            timerBar.style.width = `${percentage}%`;
-            timerText.textContent = timeLeft;
-            
-            // Change color based on time left
-            if (timeLeft <= 3) {
-                timerBar.style.backgroundColor = 'red';
+                // Load question data
+                const question = questions[currentQuestion];
+                questionText.textContent = `${currentQuestion + 1}. ${question.question}`;
+                
+                // Clear options container
+                optionsContainer.innerHTML = '';
+                
+                // Add options
+                question.options.forEach((option, index) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.classList.add('option');
+                    optionElement.textContent = option;
+                    optionElement.dataset.index = index;
+                    optionElement.addEventListener('click', selectOption);
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                // Calculate reading time and start timer with pause
+                const readingTime = calculateReadingTime(question.question);
+                startTimer(readingTime);
             } else {
-                timerBar.style.backgroundColor = 'var(--math-blue)';
+                // Show results
+                showResults();
             }
         }
-
-        // Handle timeout for a question
-        function timeoutQuestion() {
-            stopTickSounds();
-            
-            // Show correct answer
-            const correctIndex = questions[currentQuestion].correctAnswer;
-            const options = document.querySelectorAll('.option');
-            
-            options.forEach((option, index) => {
-                if (index === correctIndex) {
-                    option.classList.add('correct');
-                }
-                option.removeEventListener('click', selectOption);
-            });
-            
-            // Speak timeout message
-            speakText("Time's up! Moving to the next question.");
-            
-            // Move to next question after delay
-            setTimeout(() => {
-                animateNextQuestion();
-            }, 2000);
-        }
-
-        // Select an option
-        function selectOption(e) {
-            if (isTransitioning) return;
-            
-            // Stop the timer
-            clearInterval(timer);
+        
+        // Start timer with initial pause
+        function startTimer(pauseSeconds) {
+            timeLeft = 10;
             isPaused = true;
-            stopTickSounds();
             
-            // Get the selected option index
-            const selectedIndex = parseInt(e.target.dataset.index);
+            // Visual indication of pause
+            timerBar.classList.add('timer-paused');
+            updateTimerUI();
             
-            // Get the correct answer
-            const correctIndex = questions[currentQuestion].correctAnswer;
-            
-            // Check if the answer is correct
-            const isCorrect = selectedIndex === correctIndex;
-            
-            // Highlight the correct answer
-            const options = document.querySelectorAll('.option');
-            options.forEach((option, index) => {
-                if (index === correctIndex) {
-                    option.classList.add('correct');
-                }
-                option.removeEventListener('click', selectOption);
-            });
-            
-            // Update score if correct
-            if (isCorrect) {
-                score++;
-                playDingSound();
-                speakText("Correct! Well done.");
-                animateCharacter('correct');
-            } else {
-                speakText(`Incorrect. The correct answer is ${questions[currentQuestion].options[correctIndex]}.`);
-            }
-            
-            // Move to next question after delay
+            // Wait for reading time before starting the countdown
             setTimeout(() => {
-                animateNextQuestion();
-            }, 2000);
+                isPaused = false;
+                timerBar.classList.remove('timer-paused');
+                
+                timer = setInterval(() => {
+                    if (!isPaused && !isTransitioning) {
+                        timeLeft--;
+                        updateTimerUI();
+                        
+                        if (timeLeft <= 0) {
+                            clearInterval(timer);
+                            // Highlight correct answer
+                            highlightCorrectAnswer();
+                            
+                            // Wait a moment then transition to next question
+                            setTimeout(() => {
+                                transitionToNextQuestion();
+                            }, 1500);
+                        }
+                    }
+                }, 1000);
+            }, pauseSeconds * 1000);
         }
-
-        // Animate to next question
-        function animateNextQuestion() {
+        
+        // Transition to next question with animation
+        function transitionToNextQuestion() {
+            if (isTransitioning) return;
             isTransitioning = true;
-            
-            // Play swoosh sound
-            playSwooshSound();
             
             // Slide out current question
             questionContainer.classList.add('slide-out');
             
             setTimeout(() => {
-                // Move to next question
                 currentQuestion++;
                 
-                // Reset container style
+                // Reset classes for next question
                 questionContainer.classList.remove('slide-out');
                 questionContainer.classList.add('slide-in');
                 
-                // Load new question
+                // Load next question content
                 loadQuestion();
                 
-                // Remove animation class after transition
                 setTimeout(() => {
                     questionContainer.classList.remove('slide-in');
                     isTransitioning = false;
                 }, 600);
             }, 500);
         }
-
+        
+        // Update timer UI
+        function updateTimerUI() {
+            const percentage = (timeLeft / 10) * 100;
+            timerBar.style.width = `${percentage}%`;
+            timerText.textContent = isPaused ? 'READING' : timeLeft;
+            
+            // Change color based on time left
+            if (timeLeft <= 3 && !isPaused) {
+                timerBar.style.backgroundColor = '#F44336';
+            } else {
+                timerBar.style.backgroundColor = 'var(--math-blue)';
+            }
+        }
+        
+        // Handle option selection
+        function selectOption(e) {
+            if (isTransitioning) return;
+            
+            clearInterval(timer);
+            
+            const selectedIndex = parseInt(e.target.dataset.index);
+            const correctIndex = questions[currentQuestion].correctAnswer;
+            
+            // Disable all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.removeEventListener('click', selectOption);
+                option.style.cursor = 'default';
+            });
+            
+            // Check if answer is correct
+            if (selectedIndex === correctIndex) {
+                e.target.classList.add('correct');
+                e.target.classList.add('flash');
+                score++;
+            } else {
+                // Highlight correct answer
+                const correctOption = document.querySelectorAll('.option')[correctIndex];
+                correctOption.classList.add('correct');
+                correctOption.classList.add('flash');
+            }
+            
+            // Wait a moment then transition to next question
+            setTimeout(() => {
+                transitionToNextQuestion();
+            }, 1500);
+        }
+        
+        // Highlight correct answer
+        function highlightCorrectAnswer() {
+            const correctIndex = questions[currentQuestion].correctAnswer;
+            const correctOption = document.querySelectorAll('.option')[correctIndex];
+            correctOption.classList.add('correct');
+            correctOption.classList.add('flash');
+        }
+        
         // Show results
         function showResults() {
-            // Hide question container
             questionContainer.style.display = 'none';
-            
-            // Hide timer
-            document.querySelector('.timer-container').style.display = 'none';
-            
-            // Show results
             quizResults.style.display = 'block';
             quizResults.classList.add('fade-in');
-            
-            // Set final score
             finalScore.textContent = `${score}/${questions.length}`;
-            
-            // Speak results
-            const percentage = Math.round((score / questions.length) * 100);
-            let resultMessage = `Quiz completed! You scored ${score} out of ${questions.length}, which is ${percentage} percent.`;
-            
-            if (percentage >= 90) {
-                resultMessage += " Excellent job! You're a math master!";
-            } else if (percentage >= 70) {
-                resultMessage += " Good work! You have a solid understanding of math.";
-            } else if (percentage >= 50) {
-                resultMessage += " Not bad, but there's room for improvement. Keep studying!";
-            } else {
-                resultMessage += " Looks like you need more practice with math concepts. Don't give up!";
-            }
-            
-            speakText(resultMessage);
         }
-
-        // Restart the quiz
+        
+        // Restart quiz
         function restartQuiz() {
-            // Reset variables
             currentQuestion = 0;
             score = 0;
-            
-            // Clear progress indicators
+            isTransitioning = false;
             progressIndicator.innerHTML = '';
-            
-            // Show question container
             questionContainer.style.display = 'block';
-            
-            // Show timer
-            document.querySelector('.timer-container').style.display = 'block';
-            
-            // Hide results
             quizResults.style.display = 'none';
-            quizResults.classList.remove('fade-in');
-            
-            // Initialize quiz again
+            questionContainer.className = 'question-container fade-in';
             initQuiz();
         }
-
-        // Event listener for restart button
+        
+        // Event listeners
         restartBtn.addEventListener('click', restartQuiz);
-
-        // Voice synthesis initialization
-        if (speechSynthesisSupported) {
-            // Make sure we have voices loaded
-            if (window.speechSynthesis.getVoices().length === 0) {
-                window.speechSynthesis.onvoiceschanged = function() {
-                    // Voices are now loaded
-                };
-            }
-        }
-
-        // Initialize the quiz when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            // Slightly delay initialization to allow everything to load
-            setTimeout(initQuiz, 500);
-            
-            // Add audio context initialization on user interaction (required by some browsers)
-            document.body.addEventListener('click', () => {
-                if (!audioContext && soundEffectsEnabled) {
-                    initAudio();
-                }
-            }, { once: true });
-        });
+        
+        // Initialize the quiz
+        initQuiz();
     </script>
 </body>
 </html>
