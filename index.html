@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biology Quiz</title>
+    <title>Math Quiz</title>
     <style>
         :root {
-            --leaf-green: #4CAF50;
-            --dark-green: #2E7D32;
-            --light-green: #A5D6A7;
-            --bright-green: #00FF00;
-            --wood-brown: #795548;
-            --water-blue: #2196F3;
-            --cell-pink: #E91E63;
+            --math-blue: #1565C0;
+            --dark-blue: #0D47A1;
+            --light-blue: #90CAF9;
+            --bright-blue: #2196F3;
+            --chalk-white: #FAFAFA;
+            --graph-gray: #616161;
+            --formula-purple: #7B1FA2;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #F1F8E9;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234CAF50' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-color: #E3F2FD;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231565C0' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             margin: 0;
             padding: 0;
             display: flex;
@@ -30,20 +30,20 @@
         .quiz-container {
             background-color: white;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 100, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 100, 0.2);
             width: 80%;
             max-width: 700px;
             overflow: hidden;
-            border: 8px solid var(--dark-green);
+            border: 8px solid var(--dark-blue);
             position: relative;
         }
         
         .quiz-header {
-            background-color: var(--leaf-green);
+            background-color: var(--math-blue);
             color: white;
             padding: 20px;
             text-align: center;
-            border-bottom: 5px solid var(--dark-green);
+            border-bottom: 5px solid var(--dark-blue);
             position: relative;
         }
         
@@ -51,20 +51,19 @@
             content: "";
             position: absolute;
             width: 40px;
-            height: 70px;
-            background-color: var(--leaf-green);
-            border-radius: 50%;
-            top: -30px;
+            height: 40px;
+            background-color: var(--math-blue);
+            top: -15px;
         }
         
         .quiz-header::before {
             left: 20%;
-            transform: rotate(-45deg);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         }
         
         .quiz-header::after {
             right: 20%;
-            transform: rotate(45deg);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         }
         
         .quiz-header h1 {
@@ -77,18 +76,18 @@
         
         .timer-container {
             margin: 15px 30px;
-            background-color: #E8F5E9;
+            background-color: #E3F2FD;
             border-radius: 10px;
             height: 20px;
             overflow: hidden;
-            border: 2px solid var(--dark-green);
+            border: 2px solid var(--dark-blue);
             position: relative;
         }
         
         .timer-bar {
             height: 100%;
             width: 100%;
-            background-color: var(--leaf-green);
+            background-color: var(--math-blue);
             transition: width 0.1s linear;
         }
         
@@ -97,7 +96,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: var(--dark-green);
+            color: var(--dark-blue);
             font-weight: bold;
             z-index: 1;
         }
@@ -113,8 +112,8 @@
             font-size: 1.2em;
             font-weight: 600;
             margin-bottom: 20px;
-            color: var(--dark-green);
-            border-left: 5px solid var(--leaf-green);
+            color: var(--dark-blue);
+            border-left: 5px solid var(--math-blue);
             padding-left: 15px;
         }
         
@@ -126,22 +125,22 @@
         
         .option {
             padding: 15px;
-            background-color: #F1F8E9;
-            border: 2px solid var(--light-green);
+            background-color: #E3F2FD;
+            border: 2px solid var(--light-blue);
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .option:hover {
-            background-color: var(--light-green);
+            background-color: var(--light-blue);
             transform: translateX(5px);
         }
         
         .correct {
-            background-color: var(--bright-green);
-            border-color: var(--dark-green);
-            color: black;
+            background-color: var(--bright-blue);
+            border-color: var(--dark-blue);
+            color: white;
             font-weight: bold;
         }
         
@@ -161,7 +160,7 @@
         }
         
         .progress-dot.active {
-            background-color: var(--leaf-green);
+            background-color: var(--math-blue);
             transform: scale(1.3);
         }
         
@@ -173,19 +172,19 @@
         
         .results-header {
             font-size: 2em;
-            color: var(--dark-green);
+            color: var(--dark-blue);
             margin-bottom: 20px;
         }
         
         .score {
             font-size: 4em;
-            color: var(--leaf-green);
+            color: var(--math-blue);
             font-weight: bold;
             margin: 20px 0;
         }
         
         .restart-btn {
-            background-color: var(--leaf-green);
+            background-color: var(--math-blue);
             color: white;
             border: none;
             padding: 15px 30px;
@@ -197,46 +196,35 @@
         }
         
         .restart-btn:hover {
-            background-color: var(--dark-green);
+            background-color: var(--dark-blue);
             transform: translateY(-3px);
         }
         
-        /* Plant decorations */
-        .plant-decoration {
+        /* Math decorations */
+        .math-decoration {
             position: absolute;
             z-index: -1;
+            color: var(--math-blue);
+            font-size: 24px;
+            opacity: 0.4;
+            font-weight: bold;
         }
         
-        .plant-left {
-            left: -40px;
-            bottom: -30px;
-            transform: rotate(-15deg);
+        .formula-left {
+            left: -15px;
+            bottom: 30px;
+            transform: rotate(-20deg);
         }
         
-        .plant-right {
-            right: -40px;
-            bottom: -30px;
-            transform: rotate(15deg) scaleX(-1);
+        .formula-right {
+            right: -10px;
+            bottom: 30px;
+            transform: rotate(20deg);
         }
         
-        .leaf {
-            width: 100px;
-            height: 50px;
-            background-color: var(--leaf-green);
-            border-radius: 50% 50% 0 50%;
-            position: relative;
-            opacity: 0.8;
-        }
-        
-        .leaf::before {
-            content: "";
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            background-color: var(--light-green);
-            border-radius: 50% 50% 0 50%;
-            top: 15%;
-            left: 15%;
+        .pi-symbol {
+            font-family: serif;
+            font-size: 40px;
         }
         
         .timer-paused {
@@ -311,13 +299,13 @@
         .character-body {
             width: 60px;
             height: 60px;
-            background-color: var(--leaf-green);
-            border-radius: 50%;
+            background-color: var(--math-blue);
+            border-radius: 20%;
             position: absolute;
             bottom: 0;
             left: 10px;
             overflow: hidden;
-            border: 3px solid var(--dark-green);
+            border: 3px solid var(--dark-blue);
         }
         
         .character-face {
@@ -422,7 +410,7 @@
                 width: 95%;
             }
             
-            .plant-decoration {
+            .math-decoration {
                 display: none;
             }
             
@@ -464,7 +452,7 @@
 <body>
     <div class="quiz-container">
         <div class="quiz-header">
-            <h1>Biology Quiz</h1>
+            <h1>Math Quiz</h1>
             
             <!-- Animated Character -->
             <div class="animated-character">
@@ -505,69 +493,70 @@
             <button class="restart-btn" id="restart-btn">Try Again</button>
         </div>
         
-        <div class="plant-decoration plant-left">
-            <div class="leaf"></div>
+        <div class="math-decoration formula-left">
+            <span class="pi-symbol">π</span>r²
         </div>
-        <div class="plant-decoration plant-right">
-            <div class="leaf"></div>
+        <div class="math-decoration formula-right">
+            E=mc²
         </div>
     </div>
 
-    <script>
-        // Quiz questions
+<script>
+      // Quiz questions
 const questions = [
     {
-        question: "Which organelle is known as the 'powerhouse of the cell'?",
-        options: ["Nucleus", "Mitochondria", "Golgi apparatus", "Endoplasmic reticulum"],
-        correctAnswer: 1
-    },
-    {
-        question: "The process by which plants make their own food is called:",
-        options: ["Respiration", "Photosynthesis", "Transpiration", "Digestion"],
-        correctAnswer: 1
-    },
-    {
-        question: "DNA stands for:",
-        options: ["Deoxyribose Nucleic Acid", "Deoxyribonucleic Acid", "Diribonucleic Acid", "Deoxyribosenucleotide Acid"],
-        correctAnswer: 1
-    },
-    {
-        question: "Which of the following is NOT a type of blood cell?",
-        options: ["Erythrocytes", "Lymphocytes", "Platelets", "Nephrons"],
-        correctAnswer: 3
-    },
-    {
-        question: "The basic unit of structure and function in living organisms is:",
-        options: ["Atom", "Cell", "Tissue", "Organ"],
-        correctAnswer: 1
-    },
-    {
-        question: "What is the primary pigment responsible for photosynthesis?",
-        options: ["Chlorophyll", "Melanin", "Carotene", "Hemoglobin"],
+        question: "A farmer has 10 sheep. All but 3 run away. How many are left?",
+        options: ["3", "7", "10", "0"],
         correctAnswer: 0
     },
     {
-        // INTENTIONALLY WRONG QUESTION (Liver is correct, not kidneys)
-        question: "Which organ is primarily responsible for detoxification in the human body?",
-        options: ["Liver", "Kidneys", "Lungs", "Spleen"],
-        correctAnswer: 1  // This should be 0 (Liver) if correct
-    },
-    {
-        question: "The study of heredity and gene variation is called:",
-        options: ["Cytology", "Genetics", "Ecology", "Physiology"],
-        correctAnswer: 1
-    },
-    {
-        question: "Which of the following is an example of a decomposer?",
-        options: ["Mushroom", "Grass", "Eagle", "Shark"],
-        correctAnswer: 0
-    },
-    {
-        question: "The pH of human blood normally ranges between:",
-        options: ["5.5 - 6.5", "6.5 - 7.0", "7.35 - 7.45", "8.0 - 8.5"],
+        question: "What is half of 8 plus 4?",
+        options: ["4", "6", "8", "10"],
         correctAnswer: 2
+    },
+    {
+        question: "A basket has 5 apples. You take away 3. How many do you have?",
+        options: ["2", "3", "5", "0"],
+        correctAnswer: 1
+    },
+    {
+        question: "Which number is missing? 2, 4, 8, 16, __, 64",
+        options: ["20", "24", "32", "48"],
+        correctAnswer: 2
+    },
+    {
+        question: "If you add 2 to me, I become 10. What number am I?",
+        options: ["6", "7", "8", "9"],
+        correctAnswer: 2
+    },
+    {
+        question: "A man buys a goat for 60 dollars, sells it for 70, buys it back for 80, and sells it again for 90. What is his total profit?",
+        options: ["10", "20", "30", "40"],
+        correctAnswer: 1
+    },
+    {
+        question: "If 3 hens lay 3 eggs in 3 days, how many eggs do 6 hens lay in 6 days?",
+        options: ["6", "12", "18", "36"],
+        correctAnswer: 2
+    },
+    {
+        question: "If 5 pencils cost 10 dollars, how much do 10 pencils cost?",
+        options: ["15", "20", "25", "30"],
+        correctAnswer: 1
+    },
+    {
+        // INTENTIONALLY WRONG QUESTION (Correct answer should be 60, but incorrect answer marked)
+        question: "A train is moving north at 60 miles per hour. A man inside walks south at 5 miles per hour. How fast is the train moving?",
+        options: ["55", "60", "65", "Cannot be determined"],
+        correctAnswer: 0  // This should be 1 (60) if correct
+    },
+    {
+        question: "A father is 40 years old, and his son is 10. In how many years will the father be twice his son's age?",
+        options: ["5", "10", "15", "20"],
+        correctAnswer: 1
     }
 ];
+  
 
 // Quiz variables
 let currentQuestion = 0;
