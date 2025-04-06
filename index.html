@@ -226,67 +226,68 @@
 
     <script>
         const questions = [
-            {
-                question: "25 × 12 = ?",
-                options: ["250", "300", "350", "200"],
-                correctIndex: 1,
-                readTime: 2000 // 2 seconds to read
-            },
-            {
-                question: "If 7x - 3 = 18, what is x?",
-                options: ["2", "3", "4", "5"],
-                correctIndex: 1,
-                readTime: 3000 // 3 seconds to read
-            },
-            {
-                question: "√144 + √36 = ?",
-                options: ["18", "24", "30", "36"],
-                correctIndex: 0,
-                readTime: 2500 // 2.5 seconds to read
-            },
-            {
-                question: "20% of 350 = ?",
-                options: ["60", "70", "80", "90"],
-                correctIndex: 1,
-                readTime: 2000 // 2 seconds to read
-            },
-            {
-                question: "If a = 5 and b = 3, what is a² + b²?",
-                options: ["32", "34", "28", "26"],
-                correctIndex: 2,
-                readTime: 3000 // 3 seconds to read
-            },
-            {
-                question: "9³ - 9² = ?",
-                options: ["648", "729", "649", "656"],
-                correctIndex: 0,
-                readTime: 2500 // 2.5 seconds to read
-            },
-            {
-                question: "5(x + 3) = 45, solve for x",
-                options: ["6", "8", "9", "12"],
-                correctIndex: 0,
-                readTime: 3000 // 3 seconds to read
-            },
-            {
-                question: "What is the 8th Fibonacci number?",
-                options: ["13", "21", "34", "55"],
-                correctIndex: 0,
-                readTime: 2500 // 2.5 seconds to read
-            },
-            {
-                question: "3x² - 12 = 0, solve for x",
-                options: ["±2", "±3", "±4", "±6"],
-                correctIndex: 0,
-                readTime: 3000 // 3 seconds to read
-            },
-            {
-                question: "log₁₀(1000) = ?",
-                options: ["2", "3", "4", "10"],
-                correctIndex: 1,
-                readTime: 2000 // 2 seconds to read
-            }
-        ];
+    {
+        question: "A bat and a ball together cost $1.10. The bat costs $1 more than the ball. How much does the ball cost?",
+        options: ["$0.10", "$0.05", "$0.15", "$0.20"],
+        correctIndex: 1,
+        readTime: 4000 // 4 seconds to read
+    },
+    {
+        question: "A car travels at 60 km/h for one hour, then at 40 km/h for another hour. What is the average speed for the entire trip?",
+        options: ["50 km/h", "55 km/h", "48 km/h", "60 km/h"],
+        correctIndex: 2,
+        readTime: 3500 // 3.5 seconds to read
+    },
+    {
+        question: "If 2+2=fish and 3+3=eight, what is 7+7?",
+        options: ["14", "Triangle", "Square", "77"],
+        correctIndex: 1,
+        readTime: 2500 // 2.5 seconds to read
+    },
+    {
+        question: "A father is 40 years old. His son is 10. How many years until the father is twice the son’s age?",
+        options: ["10", "20", "30", "5"],
+        correctIndex: 1,
+        readTime: 3000 // 3 seconds to read
+    },
+    {
+        question: "How many months have 28 days?",
+        options: ["1", "6", "11", "12"],
+        correctIndex: 3,
+        readTime: 2000 // 2 seconds to read
+    },
+    {
+        question: "What is the next number in the sequence: 1, 4, 9, 16, __?",
+        options: ["20", "24", "25", "36"],
+        correctIndex: 2,
+        readTime: 2000 // 2 seconds to read
+    },
+    {
+        question: "A clock shows 6:00. What is the angle between the hour and minute hands?",
+        options: ["180°", "90°", "120°", "360°"],
+        correctIndex: 0,
+        readTime: 2500 // 2.5 seconds to read
+    },
+    {
+        question: "A man gave one-fourth of his money to his friend. Then, he spent half of what was left. If he has $30 remaining, how much did he start with?",
+        options: ["$40", "$80", "$100", "$120"],
+        correctIndex: 1,
+        readTime: 3500 // 3.5 seconds to read
+    },
+    {
+        question: "If 12 chickens lay 12 eggs in 12 days, how many eggs do 6 chickens lay in 6 days?",
+        options: ["3", "6", "6", "12"],
+        correctIndex: 2,
+        readTime: 3000 // 3 seconds to read
+    },
+    {
+        question: "A number is doubled and then increased by 10. The result is 50. What was the original number?",
+        options: ["15", "20", "25", "30"],
+        correctIndex: 1,
+        readTime: 2500 // 2.5 seconds to read
+    }
+];
+
 
         let currentQuestionIndex = 0;
         let timerInterval;
