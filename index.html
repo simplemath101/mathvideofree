@@ -202,6 +202,39 @@
                 transform: scale(1);
             }
         }
+        
+        .audio-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .audio-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .audio-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .audio-btn.active {
+            background-color: #1de840;
+        }
     </style>
 </head>
 <body>
@@ -219,7 +252,28 @@
             <div class="question active" id="question"></div>
             <div class="options" id="options"></div>
         </div>
+        
+        <div class="audio-controls">
+            <button class="audio-btn active" id="sound-toggle" title="Toggle sound">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M11.536 14.01A8.473 8.473 0 0014.026 8a8.473 8.473 0 00-2.49-6.01l-.708.707A7.476 7.476 0 0113.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                    <path d="M10.121 12.596A6.48 6.48 0 0012.025 8a6.48 6.48 0 00-1.904-4.596l-.707.707A5.483 5.483 0 0111.025 8a5.483 5.483 0 01-1.61 3.89l.706.706z"/>
+                    <path d="M8.707 11.182A4.486 4.486 0 0010.025 8a4.486 4.486 0 00-1.318-3.182L8 5.525A3.489 3.489 0 019.025 8 3.49 3.49 0 018 10.475l.707.707zM6.717 3.55A.5.5 0 017 4v8a.5.5 0 01-.812.39L3.825 10h-2.99A.5.5 0 01.5 9.5v-3A.5.5 0 01.825 6h2.99l2.363-2.39a.5.5 0 01.539-.11z"/>
+                </svg>
+            </button>
+        </div>
     </div>
+    
+    <!-- Audio elements -->
+    <audio id="tick-sound" preload="auto">
+        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAASAAAeMwAUFBQUFBQUFBQnJycnJycnJycnOjo6Ojo6Ojo6OkxMTExMTExMTE9PT09PT09PT09iYmJiYmJiYmJidXV1dXV1dXV1dYeHh4eHh4eHh4eHlJSUlJSUlJSUlKampqampqampqamtra2tra2tra2tsbGxsbGxsbGxsbb29vb29vb29vb5ubm5ubm5ubm5vX19fX19fX19fX1//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAQKAAAAAAAAHjOZTf9C//MwAAABIgBdwQABICXn915iY////9mZmbn//zOxLIAEEhAIHHZCCBGFAB2Owh4DEwDFtdQQT6BAUV5AQwCbfwEB/7kPwjIGPBkOyEA8O7K1gBwFQXdw/ymBA3j7ez+eQIeD4gBAcXyBB/9yH4Rk+ViAEQTJN5/4HndX3b3/JIEe0nxPgAxzctbtbqAMJ8YAZqSABvyAPwtZYAAbPp9PT00AEEYbYALs/sICDgzdP9KABWP2b7cxcCyAD7Pza5jPJCYG2v2b0wQDQRMSOQAUJ/8T/0ZyH4RkwhLs9m9MMQBIPttMvjrJpJj6AaNfT3/XBBnaz2b0w7IUFWYnx7QAL59Pt7eQAEp/5D8IyfLs9m9MMQCEP2bwAD//2Q==" type="audio/mp3">
+    </audio>
+    <audio id="hurry-sound" preload="auto">
+        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAASAAAeMwAUFBQUFBQUFBQnJycnJycnJycnOjo6Ojo6Ojo6OkxMTExMTExMTE9PT09PT09PT09iYmJiYmJiYmJidXV1dXV1dXV1dYeHh4eHh4eHh4eHlJSUlJSUlJSUlKampqampqampqamtra2tra2tra2tsbGxsbGxsbGxsbb29vb29vb29vb5ubm5ubm5ubm5vX19fX19fX19fX1/////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAUKAAAAAAAAHjMQhqel//MwEAABIAVdwAABICTn915iY////9mZmbn//yZAEEhAEOOyEECMKADs9hDwGJgGLa6ggn0CAor0AhgE2/gID/3IfhGQMeDIdkIB4d2VrADgKgu7h/lMCBvH29n88gQ8HxACA4vkCD/7kPwjJ8rEAIgmSbz/wPO6vu3v+SQI9pPifABjm5a3a3UADoAxnxgBmpIAG/IA/C1lgABs+n09PTQIghjbAAdn9hAQcGbp/pQAKx+zfbmLgWQAfZ+bXMZ5ITgbF+zemCAaCJiRygCgCYALT/xP/RnIfhGTCEuz2b0wxAEg+20y+OsmkmRABo19Pf9cEGdrPZvTDsiAVZifHtAAun0+3t5AAgCQAL59P/5D8IyfLs9m9MMQCAgCAIB//9k=" type="audio/mp3">
+    </audio>
+    <audio id="last-seconds-sound" preload="auto">
+        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAASAAAeMwAUFBQUFBQUFBQnJycnJycnJycnOjo6Ojo6Ojo6OkxMTExMTExMTE9PT09PT09PT09iYmJiYmJiYmJidXV1dXV1dXV1dYeHh4eHh4eHh4eHlJSUlJSUlJSUlKampqampqampqamtra2tra2tra2tsbGxsbGxsbGxsbb29vb29vb29vb5ubm5ubm5ubm5vX19fX19fX19fX1/////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAYKAAAAAAAAHjMo1LwF//MwMAABQAV3AAABQCTn915iY////9mZmbn//zIABBIQBDjshBAjCgA7PYQ8BiYBi2uoIJ9AgKK8gIYBNv4CA/9yH4RkDHgyHZCAeHdlawA4CoLu4f5TAgbx9vZ/PIEHgGCAEB+XkCD/7kPwjJ8rEAIgkSbz/wEgAHndX3b3/JIEe0nxPgAx3JW7W6gDCfGAGakgAb8gD8LWWAB3IAwHwfB9PT00AEEYbdgAuz+wgIODN0/0oAFY/ZvtzFwLN24Bdn5tcxnkhMBlX7N6YIBoImJHIAKACE/8T/0ZyH4RkwhLs9m9MMQBIPttMvjrJpJkQAaNfT3/XBBnaz2b0w7IUFWYnx7QALt9iPp9AAJAAun0//kPwjJ8uz2b0wxAIAgCAIAgH//ZA==" type="audio/mp3">
+    </audio>
 
     <script>
         const questions = [
@@ -289,13 +343,36 @@
         let timerInterval;
         let countdownInterval;
         let optionsClickable = true;
+        let soundEnabled = true;
         
+        // Audio elements
+        const tickSound = document.getElementById('tick-sound');
+        const hurrySound = document.getElementById('hurry-sound');
+        const lastSecondsSound = document.getElementById('last-seconds-sound');
+        const soundToggle = document.getElementById('sound-toggle');
+        
+        // UI elements
         const questionElement = document.getElementById('question');
         const optionsContainer = document.getElementById('options');
         const timerElement = document.getElementById('timer');
         const countdownElement = document.getElementById('countdown');
         const questionNumberElement = document.getElementById('question-number');
         const questionContainerElement = document.getElementById('question-container');
+        
+        // Toggle sound on/off
+        soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.classList.toggle('active');
+        });
+        
+        // Function to play sound with volume control
+        function playSound(audioElement) {
+            if (soundEnabled) {
+                audioElement.volume = 0.5; // Set volume to 50%
+                audioElement.currentTime = 0; // Reset sound to start
+                audioElement.play().catch(e => console.log("Audio play error:", e));
+            }
+        }
         
         // Load a question
         function loadQuestion() {
@@ -390,6 +467,9 @@
                 countdownElement.classList.remove('hidden');
                 countdownElement.classList.add('bounce');
                 
+                // Play initial tick sound
+                playSound(tickSound);
+                
                 setTimeout(() => {
                     countdownElement.classList.remove('bounce');
                 }, 300);
@@ -404,9 +484,17 @@
                         countdownElement.classList.remove('bounce');
                     }, 300);
                     
-                    // Change to red when 3 seconds or less remain
+                    // Play different sounds based on time remaining
                     if (secondsLeft <= 3) {
+                        // Play urgent sound for last 3 seconds
+                        playSound(lastSecondsSound);
                         timerElement.classList.add('ending');
+                    } else if (secondsLeft <= 5) {
+                        // Play hurry sound for seconds 4-5
+                        playSound(hurrySound);
+                    } else {
+                        // Play normal tick for other seconds
+                        playSound(tickSound);
                     }
                     
                     if (secondsLeft <= 0) {
