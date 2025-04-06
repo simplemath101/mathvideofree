@@ -221,6 +221,9 @@
         </div>
     </div>
 
+    <!-- Add audio element -->
+    <audio id="beep-sound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
     <script>
         const questions = [
             {
@@ -296,6 +299,7 @@
         const countdownElement = document.getElementById('countdown');
         const questionNumberElement = document.getElementById('question-number');
         const questionContainerElement = document.getElementById('question-container');
+        const beepSound = document.getElementById('beep-sound');
         
         // Load a question
         function loadQuestion() {
@@ -397,6 +401,10 @@
                 countdownInterval = setInterval(() => {
                     secondsLeft--;
                     countdownElement.textContent = secondsLeft;
+                    
+                    // Play beep on each second
+                    beepSound.currentTime = 0;
+                    beepSound.play();
                     
                     // Add bounce animation when number changes
                     countdownElement.classList.add('bounce');
