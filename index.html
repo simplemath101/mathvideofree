@@ -37,10 +37,10 @@
         
         .question-container {
             width: 90%;
-            height: 70%;
+            height: 75%; /* Increased from 70% */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between; /* Changed from center */
             align-items: center;
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 15px;
@@ -48,6 +48,7 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
             position: relative;
             transition: transform 0.5s, opacity 0.5s;
+            overflow: auto; /* Added to handle overflow */
         }
         
         .question-container.exit {
@@ -61,13 +62,14 @@
         }
         
         .question {
-            font-size: 2.5rem;
+            font-size: 2rem; /* Reduced from 2.5rem */
             font-weight: bold;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* Reduced from 30px */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             opacity: 0;
             transform: scale(0.8);
             transition: opacity 0.3s, transform 0.3s;
+            padding: 0 10px; /* Added padding */
         }
         
         .question.active {
@@ -78,20 +80,22 @@
         .options {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px; /* Reduced from 15px */
             width: 100%;
+            margin-bottom: 10px; /* Added margin at bottom */
         }
         
         .option {
             background-color: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            padding: 15px;
+            padding: 12px; /* Reduced from 15px */
             border-radius: 10px;
-            font-size: 1.3rem;
+            font-size: 1.2rem; /* Reduced from 1.3rem */
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
+            word-wrap: break-word; /* Added to handle long text */
         }
         
         .option:hover {
@@ -113,7 +117,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduced from 20px */
         }
         
         .timer-container {
@@ -202,6 +206,21 @@
                 transform: scale(1);
             }
         }
+        
+        /* Added media query for smaller screens */
+        @media (max-height: 600px) or (max-width: 400px) {
+            .question {
+                font-size: 1.6rem;
+                margin-bottom: 10px;
+            }
+            .option {
+                padding: 8px;
+                font-size: 1rem;
+            }
+            .question-container {
+                height: 80%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -245,7 +264,7 @@
         readTime: 2500 // 2.5 seconds to read
     },
     {
-        question: "A father is 40 years old. His son is 10. How many years until the father is twice the son’s age?",
+        question: "A father is 40 years old. His son is 10. How many years until the father is twice the son's age?",
         options: ["10", "20", "30", "5"],
         correctIndex: 1,
         readTime: 3000 // 3 seconds to read
