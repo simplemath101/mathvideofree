@@ -1,146 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>TikTok Math Quiz</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #111;
-      color: #fff;
-      font-family: 'Arial Black', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .question-box {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .timer {
-      font-size: 2rem;
-      color: #ff4444;
-    }
-
-    .answer-input {
-      font-size: 2rem;
-      padding: 0.5rem;
-      width: 100px;
-      text-align: center;
-    }
-
-    .score {
-      font-size: 2.5rem;
-      color: #00ff88;
-    }
-
-    button {
-      padding: 1rem 2rem;
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      background-color: #fff;
-      color: #111;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #00ff88;
-      color: #000;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz Challenge</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            height: 100vh;
+            max-height: 800px;
+            background: linear-gradient(135deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 0px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .question-container {
+            width: 90%;
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            position: relative;
+            transition: transform 0.5s, opacity 0.5s;
+        }
+        
+        .question-container.exit {
+            transform: translateX(-100%) rotate(-10deg);
+            opacity: 0;
+        }
+        
+        .question-container.enter {
+            transform: translateX(100%) rotate(10deg);
+            opacity: 0;
+        }
+        
+        .question {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .question.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        
+        .option {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .option:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .option.correct {
+            background-color: #2ecc71;
+            animation: pulse 0.5s;
+        }
+        
+        .option.incorrect {
+            background-color: #e74c3c;
+        }
+        
+        .timer-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .timer-container {
+            width: 100%;
+            height: 15px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        
+        .timer {
+            height: 100%;
+            background-color: #00ff00; /* Bright green */
+            width: 100%;
+            transition: width 10s linear, background-color 0.5s;
+        }
+        
+        .timer.paused {
+            transition: none;
+        }
+        
+        .timer.ending {
+            background-color: #ff0000; /* Red */
+        }
+        
+        .countdown {
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .countdown.hidden {
+            opacity: 0;
+        }
+        
+        .countdown.bounce {
+            animation: bounce 0.3s;
+        }
+        
+        .question-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.5s, opacity 0.5s;
+        }
+        
+        .question-number.change {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes bounce {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="question-number" id="question-number">Question: 1/10</div>
+        
+        <div class="question-container" id="question-container">
+            <div class="timer-section">
+                <div class="timer-container">
+                    <div class="timer paused" id="timer"></div>
+                </div>
+                <div class="countdown hidden" id="countdown">10</div>
+            </div>
+            
+            <div class="question active" id="question"></div>
+            <div class="options" id="options"></div>
+        </div>
+    </div>
 
-  <div class="question-box" id="question">Ready?</div>
-  <div class="timer" id="timer">10</div>
-  <input type="number" id="answer" class="answer-input" placeholder="Answer">
-  <div id="scoreDisplay" class="score"></div>
-  <button id="startBtn">Start Quiz</button>
+    <script>
+        const questions = [
+            {
+                question: "25 × 12 = ?",
+                options: ["250", "300", "350", "200"],
+                correctIndex: 1,
+                readTime: 2000 // 2 seconds to read
+            },
+            {
+                question: "If 7x - 3 = 18, what is x?",
+                options: ["2", "3", "4", "5"],
+                correctIndex: 1,
+                readTime: 3000 // 3 seconds to read
+            },
+            {
+                question: "√144 + √36 = ?",
+                options: ["18", "24", "30", "36"],
+                correctIndex: 0,
+                readTime: 2500 // 2.5 seconds to read
+            },
+            {
+                question: "20% of 350 = ?",
+                options: ["60", "70", "80", "90"],
+                correctIndex: 1,
+                readTime: 2000 // 2 seconds to read
+            },
+            {
+                question: "If a = 5 and b = 3, what is a² + b²?",
+                options: ["32", "34", "28", "26"],
+                correctIndex: 2,
+                readTime: 3000 // 3 seconds to read
+            },
+            {
+                question: "9³ - 9² = ?",
+                options: ["648", "729", "649", "656"],
+                correctIndex: 0,
+                readTime: 2500 // 2.5 seconds to read
+            },
+            {
+                question: "5(x + 3) = 45, solve for x",
+                options: ["6", "8", "9", "12"],
+                correctIndex: 0,
+                readTime: 3000 // 3 seconds to read
+            },
+            {
+                question: "What is the 8th Fibonacci number?",
+                options: ["13", "21", "34", "55"],
+                correctIndex: 0,
+                readTime: 2500 // 2.5 seconds to read
+            },
+            {
+                question: "3x² - 12 = 0, solve for x",
+                options: ["±2", "±3", "±4", "±6"],
+                correctIndex: 0,
+                readTime: 3000 // 3 seconds to read
+            },
+            {
+                question: "log₁₀(1000) = ?",
+                options: ["2", "3", "4", "10"],
+                correctIndex: 1,
+                readTime: 2000 // 2 seconds to read
+            }
+        ];
 
-  <script>
-    const questionBox = document.getElementById('question');
-    const timerDisplay = document.getElementById('timer');
-    const answerInput = document.getElementById('answer');
-    const scoreDisplay = document.getElementById('scoreDisplay');
-    const startBtn = document.getElementById('startBtn');
-
-    let currentQuestion = 0;
-    let score = 0;
-    let timeLeft = 10;
-    let timer;
-    let quizData = [];
-
-    function generateQuestions() {
-      for (let i = 0; i < 10; i++) {
-        const num1 = Math.floor(Math.random() * 20) + 1;
-        const num2 = Math.floor(Math.random() * 20) + 1;
-        const op = ['+', '-', '*'][Math.floor(Math.random() * 3)];
-        let question = `${num1} ${op} ${num2}`;
-        let answer = eval(question);
-        quizData.push({ question, answer });
-      }
-    }
-
-    function showQuestion() {
-      if (currentQuestion >= quizData.length) {
-        clearInterval(timer);
-        questionBox.textContent = "Quiz Over!";
-        timerDisplay.style.display = "none";
-        answerInput.style.display = "none";
-        scoreDisplay.textContent = `Your Score: ${score}/10`;
-        return;
-      }
-
-      questionBox.textContent = `Q${currentQuestion + 1}: ${quizData[currentQuestion].question}`;
-      answerInput.value = '';
-      timeLeft = 10;
-      timerDisplay.textContent = timeLeft;
-
-      clearInterval(timer);
-      timer = setInterval(() => {
-        timeLeft--;
-        timerDisplay.textContent = timeLeft;
-        if (timeLeft === 0) {
-          checkAnswer();
-          currentQuestion++;
-          showQuestion();
+        let currentQuestionIndex = 0;
+        let timerInterval;
+        let countdownInterval;
+        let optionsClickable = true;
+        
+        const questionElement = document.getElementById('question');
+        const optionsContainer = document.getElementById('options');
+        const timerElement = document.getElementById('timer');
+        const countdownElement = document.getElementById('countdown');
+        const questionNumberElement = document.getElementById('question-number');
+        const questionContainerElement = document.getElementById('question-container');
+        
+        // Load a question
+        function loadQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                // Update question number display with animation
+                questionNumberElement.classList.add('change');
+                
+                setTimeout(() => {
+                    questionNumberElement.textContent = `Question: ${currentQuestionIndex + 1}/10`;
+                    questionNumberElement.classList.remove('change');
+                }, 500);
+                
+                // Set question container to "enter" state
+                questionContainerElement.classList.add('enter');
+                
+                // Apply transition after a small delay to ensure the class is applied
+                setTimeout(() => {
+                    // Remove both enter/exit classes to get to normal state with transition
+                    questionContainerElement.classList.remove('enter', 'exit');
+                    
+                    const currentQuestion = questions[currentQuestionIndex];
+                    
+                    // Set question text
+                    questionElement.textContent = currentQuestion.question;
+                    
+                    // Add animation class
+                    questionElement.classList.remove('active');
+                    setTimeout(() => {
+                        questionElement.classList.add('active');
+                    }, 10);
+                    
+                    // Clear previous options
+                    optionsContainer.innerHTML = '';
+                    
+                    // Add new options
+                    currentQuestion.options.forEach((option, index) => {
+                        const button = document.createElement('button');
+                        button.className = 'option';
+                        button.textContent = option;
+                        
+                        button.addEventListener('click', () => {
+                            if (optionsClickable) {
+                                checkAnswer(index);
+                            }
+                        });
+                        
+                        optionsContainer.appendChild(button);
+                    });
+                    
+                    // Start timer with read time pause
+                    startTimerWithPause(currentQuestion.readTime);
+                    
+                    // Allow clicking
+                    optionsClickable = true;
+                }, 50);
+                
+            } else {
+                // Loop back to first question
+                currentQuestionIndex = 0;
+                loadQuestion();
+            }
         }
-      }, 1000);
-    }
-
-    function checkAnswer() {
-      let userAns = parseInt(answerInput.value);
-      if (userAns === quizData[currentQuestion].answer) {
-        score++;
-      }
-    }
-
-    startBtn.addEventListener('click', () => {
-      quizData = [];
-      score = 0;
-      currentQuestion = 0;
-      timerDisplay.style.display = "block";
-      answerInput.style.display = "inline";
-      scoreDisplay.textContent = '';
-      generateQuestions();
-      showQuestion();
-      startBtn.style.display = 'none';
-    });
-
-    answerInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        clearInterval(timer);
-        checkAnswer();
-        currentQuestion++;
-        showQuestion();
-      }
-    });
-  </script>
+        
+        // Start the timer with an initial pause for reading
+        function startTimerWithPause(pauseTime) {
+            // Reset timer style and add paused class
+            timerElement.style.transition = 'none';
+            timerElement.style.width = '100%';
+            timerElement.classList.add('paused');
+            timerElement.classList.remove('ending');
+            
+            // Hide countdown during reading time
+            countdownElement.classList.add('hidden');
+            
+            // Force browser reflow
+            void timerElement.offsetWidth;
+            
+            // Clear any existing interval
+            clearTimeout(timerInterval);
+            clearInterval(countdownInterval);
+            
+            // First wait for the read time
+            setTimeout(() => {
+                // Remove paused class and start timer animation
+                timerElement.classList.remove('paused');
+                timerElement.style.transition = 'width 10s linear, background-color 0.5s';
+                timerElement.style.width = '0%';
+                
+                // Start countdown and show it
+                let secondsLeft = 10;
+                countdownElement.textContent = secondsLeft;
+                countdownElement.classList.remove('hidden');
+                countdownElement.classList.add('bounce');
+                
+                setTimeout(() => {
+                    countdownElement.classList.remove('bounce');
+                }, 300);
+                
+                countdownInterval = setInterval(() => {
+                    secondsLeft--;
+                    countdownElement.textContent = secondsLeft;
+                    
+                    // Add bounce animation when number changes
+                    countdownElement.classList.add('bounce');
+                    setTimeout(() => {
+                        countdownElement.classList.remove('bounce');
+                    }, 300);
+                    
+                    // Change to red when 3 seconds or less remain
+                    if (secondsLeft <= 3) {
+                        timerElement.classList.add('ending');
+                    }
+                    
+                    if (secondsLeft <= 0) {
+                        clearInterval(countdownInterval);
+                    }
+                }, 1000);
+                
+                // Set timeout for when time is up
+                timerInterval = setTimeout(() => {
+                    if (optionsClickable) {
+                        // Time's up, move to next question
+                        optionsClickable = false;
+                        clearInterval(countdownInterval);
+                        
+                        // Highlight correct answer
+                        const options = document.querySelectorAll('.option');
+                        options[questions[currentQuestionIndex].correctIndex].classList.add('correct');
+                        
+                        setTimeout(() => {
+                            transitionToNextQuestion();
+                        }, 1500);
+                    }
+                }, 10000);
+            }, pauseTime);
+        }
+        
+        // Check the selected answer
+        function checkAnswer(selectedIndex) {
+            optionsClickable = false;
+            clearTimeout(timerInterval);
+            clearInterval(countdownInterval);
+            
+            const currentQuestion = questions[currentQuestionIndex];
+            const options = document.querySelectorAll('.option');
+            
+            // Show correct and incorrect answers
+            if (selectedIndex === currentQuestion.correctIndex) {
+                options[selectedIndex].classList.add('correct');
+            } else {
+                options[selectedIndex].classList.add('incorrect');
+                options[currentQuestion.correctIndex].classList.add('correct');
+            }
+            
+            // Move to next question after a brief delay
+            setTimeout(() => {
+                transitionToNextQuestion();
+            }, 1500);
+        }
+        
+        // Transition to the next question with animation
+        function transitionToNextQuestion() {
+            // Add exit animation class
+            questionContainerElement.classList.add('exit');
+            
+            // Wait for animation to complete
+            setTimeout(() => {
+                currentQuestionIndex++;
+                loadQuestion();
+            }, 500);
+        }
+        
+        // Start the quiz immediately
+        window.onload = loadQuestion;
+    </script>
 </body>
 </html>
