@@ -20,9 +20,10 @@
         
         .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             height: 100vh;
             max-height: 800px;
+            aspect-ratio: 9/16; /* Changed to 9:16 aspect ratio */
             background: linear-gradient(135deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8);
             position: relative;
             overflow: hidden;
@@ -36,11 +37,11 @@
         }
         
         .question-container {
-            width: 90%;
-            height: 75%; /* Increased from 70% */
+            width: 85%;
+            height: 70%; 
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Changed from center */
+            justify-content: space-between;
             align-items: center;
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 15px;
@@ -48,7 +49,7 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
             position: relative;
             transition: transform 0.5s, opacity 0.5s;
-            overflow: auto; /* Added to handle overflow */
+            overflow: auto;
         }
         
         .question-container.exit {
@@ -62,14 +63,14 @@
         }
         
         .question {
-            font-size: 2rem; /* Reduced from 2.5rem */
+            font-size: 1.8rem;
             font-weight: bold;
-            margin-bottom: 20px; /* Reduced from 30px */
+            margin-bottom: 15px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             opacity: 0;
             transform: scale(0.8);
             transition: opacity 0.3s, transform 0.3s;
-            padding: 0 10px; /* Added padding */
+            padding: 0 10px;
         }
         
         .question.active {
@@ -80,22 +81,22 @@
         .options {
             display: flex;
             flex-direction: column;
-            gap: 12px; /* Reduced from 15px */
+            gap: 12px;
             width: 100%;
-            margin-bottom: 10px; /* Added margin at bottom */
+            margin-bottom: 10px;
         }
         
         .option {
             background-color: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            padding: 12px; /* Reduced from 15px */
+            padding: 12px;
             border-radius: 10px;
-            font-size: 1.2rem; /* Reduced from 1.3rem */
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
-            word-wrap: break-word; /* Added to handle long text */
+            word-wrap: break-word;
         }
         
         .option:hover {
@@ -117,12 +118,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 15px; /* Reduced from 20px */
+            margin-bottom: 15px;
         }
         
         .timer-container {
             width: 100%;
-            height: 15px;
+            height: 12px;
             background-color: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             overflow: hidden;
@@ -131,7 +132,7 @@
         
         .timer {
             height: 100%;
-            background-color: #00ff00; /* Bright green */
+            background-color: #00ff00;
             width: 100%;
             transition: width 10s linear, background-color 0.5s;
         }
@@ -141,16 +142,16 @@
         }
         
         .timer.ending {
-            background-color: #ff0000; /* Red */
+            background-color: #ff0000;
         }
         
         .countdown {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -170,10 +171,10 @@
             top: 20px;
             left: 20px;
             background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 20px;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
             transition: transform 0.5s, opacity 0.5s;
         }
@@ -207,18 +208,19 @@
             }
         }
         
-        /* Added media query for smaller screens */
-        @media (max-height: 600px) or (max-width: 400px) {
+        /* Updated media query for better responsiveness */
+        @media (max-height: 700px) or (max-width: 380px) {
             .question {
-                font-size: 1.6rem;
-                margin-bottom: 10px;
+                font-size: 1.5rem;
+                margin-bottom: 8px;
             }
             .option {
                 padding: 8px;
                 font-size: 1rem;
             }
             .question-container {
-                height: 80%;
+                height: 75%;
+                width: 90%;
             }
         }
     </style>
