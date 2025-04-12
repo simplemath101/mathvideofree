@@ -2,505 +2,206 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Quiz Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gambia Quiz TikTok Animation</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #000;
             color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             overflow: hidden;
         }
         
         .container {
             width: 100%;
-            max-width: 450px;
             height: 100vh;
-            max-height: 800px;
-            aspect-ratio: 9/16; /* Changed to 9:16 aspect ratio */
-            background: linear-gradient(135deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8);
+            background: linear-gradient(135deg, #ff2400, #e81d1d, #e8b71d, #1de840, #1ddde8, #2b1de8);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            border-radius: 0px;
+            justify-content: center;
+        }
+        
+        .flag-container {
+            width: 80%;
+            max-width: 300px;
+            height: 180px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
         
-        .question-container {
-            width: 85%;
-            height: 70%; 
+        .flag-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 10px;
+        }
+        
+        .text-container {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            position: relative;
-            transition: transform 0.5s, opacity 0.5s;
-            overflow: auto;
+            justify-content: center;
+            width: 90%;
+            max-width: 400px;
         }
         
-        .question-container.exit {
-            transform: translateX(-100%) rotate(-10deg);
-            opacity: 0;
-        }
-        
-        .question-container.enter {
-            transform: translateX(100%) rotate(10deg);
-            opacity: 0;
-        }
-        
-        .question {
-            font-size: 1.8rem;
+        .text {
+            font-size: 0;
             font-weight: bold;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            margin-bottom: 30px;
             opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.3s, transform 0.3s;
-            padding: 0 10px;
+            transform: scale(0.5);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            letter-spacing: 1px;
         }
         
-        .question.active {
+        .text.active {
+            font-size: 42px;
             opacity: 1;
             transform: scale(1);
         }
         
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            margin-bottom: 10px;
+        .text:nth-child(1) {
+            color: #ffcc00;
         }
         
-        .option {
-            background-color: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            word-wrap: break-word;
+        .text:nth-child(2) {
+            color: #ff66ff;
         }
         
-        .option:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
+        .text:nth-child(3) {
+            color: #33ff33;
         }
         
-        .option.correct {
-            background-color: #2ecc71;
-            animation: pulse 0.5s;
-        }
-        
-        .option.incorrect {
-            background-color: #e74c3c;
-        }
-        
-        .timer-section {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .timer-container {
-            width: 100%;
-            height: 12px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 5px;
-        }
-        
-        .timer {
-            height: 100%;
-            background-color: #00ff00;
-            width: 100%;
-            transition: width 10s linear, background-color 0.5s;
-        }
-        
-        .timer.paused {
-            transition: none;
-        }
-        
-        .timer.ending {
-            background-color: #ff0000;
-        }
-        
-        .countdown {
-            font-size: 1.1rem;
-            font-weight: bold;
+        .tiktok-banner {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
-        .countdown.hidden {
-            opacity: 0;
+        .tiktok-logo {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            flex-shrink: 0;
         }
         
-        .countdown.bounce {
-            animation: bounce 0.3s;
-        }
-        
-        .question-number {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 8px 12px;
-            border-radius: 20px;
+        .tiktok-text {
             font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            transition: transform 0.5s, opacity 0.5s;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
         
-        .question-number.change {
-            transform: translateY(-20px);
-            opacity: 0;
+        @keyframes backgroundShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes bounce {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.3);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        /* Updated media query for better responsiveness */
-        @media (max-height: 700px) or (max-width: 380px) {
-            .question {
-                font-size: 1.5rem;
-                margin-bottom: 8px;
-            }
-            .option {
-                padding: 8px;
-                font-size: 1rem;
-            }
-            .question-container {
-                height: 75%;
-                width: 90%;
-            }
+        .container {
+            background-size: 400% 400%;
+            animation: backgroundShift 10s ease infinite;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="question-number" id="question-number">Question: 1/10</div>
-        
-        <div class="question-container" id="question-container">
-            <div class="timer-section">
-                <div class="timer-container">
-                    <div class="timer paused" id="timer"></div>
-                </div>
-                <div class="countdown hidden" id="countdown">10</div>
+        <div class="flag-container">
+            <div class="flag-placeholder">
+                [Gambian Flag GIF Goes Here]<br>
+                <small>https://www.shutterstock.com/video/clip-5371964-flag-gambia-beautiful-3d-animation-loop-mode</small>
             </div>
-            
-            <div class="question active" id="question"></div>
-            <div class="options" id="options"></div>
+        </div>
+        
+        <div class="text-container">
+            <div class="text" id="text1">Gambia Quiz!</div>
+            <div class="text" id="text2">If you get 8/10!</div>
+            <div class="text" id="text3">You are a certified Genius!</div>
+        </div>
+        
+        <div class="tiktok-banner">
+            <svg class="tiktok-logo" viewBox="0 0 32 32" fill="white">
+                <path d="M16.708 0.027c1.745-0.027 3.48-0.011 5.213-0.027 0.105 2.041 0.839 4.12 2.333 5.563 1.491 1.479 3.6 2.156 5.652 2.385v5.369c-1.923-0.063-3.855-0.463-5.6-1.291-0.76-0.344-1.468-0.787-2.161-1.24-0.009 3.896 0.016 7.787-0.025 11.667-0.104 1.864-0.719 3.719-1.803 5.255-1.744 2.557-4.771 4.224-7.88 4.276-1.907 0.109-3.812-0.411-5.437-1.369-2.693-1.588-4.588-4.495-4.864-7.615-0.032-0.667-0.043-1.333-0.016-1.984 0.24-2.537 1.495-4.964 3.443-6.615 2.208-1.923 5.301-2.839 8.197-2.297 0.027 1.975-0.052 3.948-0.052 5.923-1.323-0.428-2.869-0.308-4.025 0.495-0.844 0.547-1.485 1.385-1.819 2.333-0.276 0.676-0.197 1.427-0.181 2.145 0.317 2.188 2.421 4.027 4.667 3.828 1.489-0.016 2.916-0.88 3.692-2.145 0.251-0.443 0.532-0.896 0.547-1.417 0.131-2.385 0.079-4.76 0.095-7.145 0.011-5.375-0.016-10.735 0.025-16.093z"></path>
+            </svg>
+            <span class="tiktok-text">@gambia.sunu.reww</span>
         </div>
     </div>
 
-    <!-- Add audio element -->
-    <audio id="beep-sound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
-
     <script>
-        const questions = [
-    {
-        question: "A farmer has 17 sheep. All but 9 run away. How many are left?",
-        options: ["9", "8", "17", "0"],
-        correctIndex: 0,
-        readTime: 6000 // 2.5 seconds to read
-    },
-    {
-        question: "What is half of two plus two?",
-        options: ["1", "2", "3", "4"],
-        correctIndex: 1,
-        readTime: 3000 // 2 seconds to read
-    },
-    {
-        question: "If a dozen eggs cost $3, how much do two eggs cost?",
-        options: ["$0.50", "$0.25", "$1.00", "$1.50"],
-        correctIndex: 0,
-        readTime: 5000 // 2 seconds to read
-    },
-    {
-        question: "A train is moving 60 km/h. How far will it travel in 10 minutes?",
-        options: ["5 km", "10 km", "20 km", "6 km"],
-        correctIndex: 1,
-        readTime: 6000 // 2 seconds to read
-    },
-    {
-        question: "A store sells apples at $1 each. Buy one, get one free. How many apples do you get for $5?",
-        options: ["5", "6", "10", "8"],
-        correctIndex: 2,
-        readTime: 7000 // 2.5 seconds to read
-    },
-    {
-        question: "What is 100 divided by ½?",
-        options: ["50", "100", "200", "20"],
-        correctIndex: 2,
-        readTime: 3000 // 2 seconds to read
-    },
-    {
-        question: "A man is twice as old as his son. Four years ago, he was three times as old. How old is the son now?",
-        options: ["8", "10", "12", "14"],
-        correctIndex: 1,
-        readTime: 8000 // 3 seconds to read
-    },
-    {
-        question: "You walk 5 meters north, east, south, then west. How far from your start are you?",
-        options: ["5 meters", "10 meters", "0 meters", "20 meters"],
-        correctIndex: 2,
-        readTime: 9000 // 2.5 seconds to read
-    },
-    {
-        question: "If 5 machines take 5 minutes to make 5 widgets, how long will 100 machines take to make 100 widgets?",
-        options: ["5 minutes", "1 minute", "10 minutes", "20 minutes"],
-        correctIndex: 0,
-        readTime: 8000 // 3 seconds to read
-    },
-    {
-        question: "How many times can you subtract 10 from 100?",
-        options: ["1 time", "5 times", "10 times", "Unlimited times"],
-        correctIndex: 0,
-        readTime: 4000 // 2.5 seconds to read
-    }
-];
-
-
-
-        let currentQuestionIndex = 0;
-        let timerInterval;
-        let countdownInterval;
-        let optionsClickable = true;
-        
-        const questionElement = document.getElementById('question');
-        const optionsContainer = document.getElementById('options');
-        const timerElement = document.getElementById('timer');
-        const countdownElement = document.getElementById('countdown');
-        const questionNumberElement = document.getElementById('question-number');
-        const questionContainerElement = document.getElementById('question-container');
-        const beepSound = document.getElementById('beep-sound');
-        
-        // Load a question
-        function loadQuestion() {
-            if (currentQuestionIndex < questions.length) {
-                // Update question number display with animation
-                questionNumberElement.classList.add('change');
-                
-                setTimeout(() => {
-                    questionNumberElement.textContent = `Question: ${currentQuestionIndex + 1}/10`;
-                    questionNumberElement.classList.remove('change');
-                }, 500);
-                
-                // Set question container to "enter" state
-                questionContainerElement.classList.add('enter');
-                
-                // Apply transition after a small delay to ensure the class is applied
-                setTimeout(() => {
-                    // Remove both enter/exit classes to get to normal state with transition
-                    questionContainerElement.classList.remove('enter', 'exit');
-                    
-                    const currentQuestion = questions[currentQuestionIndex];
-                    
-                    // Set question text
-                    questionElement.textContent = currentQuestion.question;
-                    
-                    // Add animation class
-                    questionElement.classList.remove('active');
-                    setTimeout(() => {
-                        questionElement.classList.add('active');
-                    }, 10);
-                    
-                    // Clear previous options
-                    optionsContainer.innerHTML = '';
-                    
-                    // Add new options
-                    currentQuestion.options.forEach((option, index) => {
-                        const button = document.createElement('button');
-                        button.className = 'option';
-                        button.textContent = option;
-                        
-                        button.addEventListener('click', () => {
-                            if (optionsClickable) {
-                                checkAnswer(index);
-                            }
-                        });
-                        
-                        optionsContainer.appendChild(button);
-                    });
-                    
-                    // Start timer with read time pause
-                    startTimerWithPause(currentQuestion.readTime);
-                    
-                    // Allow clicking
-                    optionsClickable = true;
-                }, 50);
-                
-            } else {
-                // Loop back to first question
-                currentQuestionIndex = 0;
-                loadQuestion();
-            }
-        }
-        
-        // Start the timer with an initial pause for reading
-        function startTimerWithPause(pauseTime) {
-            // Reset timer style and add paused class
-            timerElement.style.transition = 'none';
-            timerElement.style.width = '100%';
-            timerElement.classList.add('paused');
-            timerElement.classList.remove('ending');
+        // Animation sequence
+        function startAnimation() {
+            const text1 = document.getElementById('text1');
+            const text2 = document.getElementById('text2');
+            const text3 = document.getElementById('text3');
             
-            // Hide countdown during reading time
-            countdownElement.classList.add('hidden');
-            
-            // Force browser reflow
-            void timerElement.offsetWidth;
-            
-            // Clear any existing interval
-            clearTimeout(timerInterval);
-            clearInterval(countdownInterval);
-            
-            // First wait for the read time
+            // First text appears
             setTimeout(() => {
-                // Remove paused class and start timer animation
-                timerElement.classList.remove('paused');
-                timerElement.style.transition = 'width 10s linear, background-color 0.5s';
-                timerElement.style.width = '0%';
-                
-                // Start countdown and show it
-                let secondsLeft = 10;
-                countdownElement.textContent = secondsLeft;
-                countdownElement.classList.remove('hidden');
-                countdownElement.classList.add('bounce');
-                
-                setTimeout(() => {
-                    countdownElement.classList.remove('bounce');
-                }, 300);
-                
-                countdownInterval = setInterval(() => {
-                    secondsLeft--;
-                    countdownElement.textContent = secondsLeft;
-                    
-                    // Play beep on each second
-                    beepSound.currentTime = 0;
-                    beepSound.play();
-                    
-                    // Add bounce animation when number changes
-                    countdownElement.classList.add('bounce');
-                    setTimeout(() => {
-                        countdownElement.classList.remove('bounce');
-                    }, 300);
-                    
-                    // Change to red when 3 seconds or less remain
-                    if (secondsLeft <= 3) {
-                        timerElement.classList.add('ending');
-                    }
-                    
-                    if (secondsLeft <= 0) {
-                        clearInterval(countdownInterval);
-                    }
-                }, 1000);
-                
-                // Set timeout for when time is up
-                timerInterval = setTimeout(() => {
-                    if (optionsClickable) {
-                        // Time's up, move to next question
-                        optionsClickable = false;
-                        clearInterval(countdownInterval);
-                        
-                        // Highlight correct answer
-                        const options = document.querySelectorAll('.option');
-                        options[questions[currentQuestionIndex].correctIndex].classList.add('correct');
-                        
-                        setTimeout(() => {
-                            transitionToNextQuestion();
-                        }, 1500);
-                    }
-                }, 10000);
-            }, pauseTime);
-        }
-        
-        // Check the selected answer
-        function checkAnswer(selectedIndex) {
-            optionsClickable = false;
-            clearTimeout(timerInterval);
-            clearInterval(countdownInterval);
-            
-            const currentQuestion = questions[currentQuestionIndex];
-            const options = document.querySelectorAll('.option');
-            
-            // Show correct and incorrect answers
-            if (selectedIndex === currentQuestion.correctIndex) {
-                options[selectedIndex].classList.add('correct');
-            } else {
-                options[selectedIndex].classList.add('incorrect');
-                options[currentQuestion.correctIndex].classList.add('correct');
-            }
-            
-            // Move to next question after a brief delay
-            setTimeout(() => {
-                transitionToNextQuestion();
-            }, 1500);
-        }
-        
-        // Transition to the next question with animation
-        function transitionToNextQuestion() {
-            // Add exit animation class
-            questionContainerElement.classList.add('exit');
-            
-            // Wait for animation to complete
-            setTimeout(() => {
-                currentQuestionIndex++;
-                loadQuestion();
+                text1.classList.add('active');
             }, 500);
+            
+            // Second text appears
+            setTimeout(() => {
+                text2.classList.add('active');
+            }, 2000);
+            
+            // Third text appears
+            setTimeout(() => {
+                text3.classList.add('active');
+            }, 3500);
+            
+            // Reset animation after some time
+            setTimeout(() => {
+                text1.classList.remove('active');
+                text2.classList.remove('active');
+                text3.classList.remove('active');
+                
+                // Restart animation
+                setTimeout(() => {
+                    startAnimation();
+                }, 1000);
+            }, 7000);
         }
         
-        // Start the quiz immediately
-        window.onload = loadQuestion;
+        // Start animation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            startAnimation();
+        });
     </script>
 </body>
 </html>
