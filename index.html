@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Share This TikTok Video</title>
+    <title>AIUWA VS UTG Comparison</title>
     <style>
         * {
             box-sizing: border-box;
@@ -48,7 +48,7 @@
         }
         
         .share-text {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: bold;
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -66,17 +66,17 @@
         }
         
         .versus-text {
-            font-size: 2.2rem;
+            font-size: 3rem;
             margin: 10px 0;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
             animation: glow 2s infinite alternate;
         }
         
         .university-text {
-            font-size: 1.6rem;
+            font-size: 2.2rem;
             display: inline-block;
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 8px 15px;
+            border-radius: 8px;
             margin: 0 5px;
         }
         
@@ -186,7 +186,19 @@
             z-index: 5;
         }
         
-        /* Added visible text animation */
+        .question-mark {
+            font-size: 3.5rem;
+            display: inline-block;
+            color: #ffcc00;
+            animation: bounce 1s infinite alternate;
+            margin-left: 5px;
+        }
+        
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        
         .visible {
             opacity: 1;
             transform: translateY(0);
@@ -210,14 +222,13 @@
             </div>
             
             <div class="share-content">
-                <div class="share-text" id="text1">BEFORE YOUR LAST QUESTION</div>
-                <div class="share-text" id="text2"><span class="highlight">SHARE</span> THIS VIDEO WITH YOUR CLASSMATES!</div>
-                <div class="share-text" id="text3">AND DON'T FORGET TO COMMENT</div>
-                <div class="share-text" id="text4">THE <span class="highlight">BEST</span> UNIVERSITY IN THE GAMBIA</div>
-                <div class="share-text" id="text5">
-                    <span class="university-text aiuwa">UTG</span>
-                    <span class="versus-text">OR</span>
-                    <span class="university-text utg">AIUWA</span>
+                <div class="share-text" id="text1">
+                    <span class="university-text aiuwa">AIUWA</span>
+                    <span class="versus-text">VS</span>
+                    <span class="university-text utg">UTG</span>
+                </div>
+                <div class="share-text" id="text2">
+                    WHICH ONE IS THE <span class="highlight">BEST</span><span class="question-mark">???</span>
                 </div>
             </div>
         </div>
@@ -227,17 +238,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             const texts = document.querySelectorAll('.share-text');
             
-            // Much slower animation timing - mimics reading pace
-            // Each line appears with significant delay between them
+            // Slow, dramatic reveal of each text element
             texts.forEach((text, index) => {
                 setTimeout(() => {
                     text.classList.add('visible');
                     
-                    // If it's the last text, make it stand out more with a special animation
+                    // Add extra animation to the question marks
                     if (index === texts.length - 1) {
                         text.style.animation = 'fade-in-up 1.5s forwards';
                     }
-                }, index * 2000); // 2000ms (2 seconds) delay between each text element
+                }, index * 2500); // 2.5 seconds between elements for a very deliberate pace
             });
         });
     </script>
